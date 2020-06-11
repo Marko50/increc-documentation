@@ -1,7 +1,7 @@
-algorithms
-==========
+FEUP-DISS
+=========
 
 .. toctree::
    :maxdepth: 4
 
-   algorithms
+   FEUP-DISS

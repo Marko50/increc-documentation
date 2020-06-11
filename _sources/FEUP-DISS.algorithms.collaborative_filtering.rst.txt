@@ -1,0 +1,31 @@
+FEUP\-DISS.algorithms.collaborative\_filtering package
+======================================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   FEUP-DISS.algorithms.collaborative_filtering.matrix_factorization
+   FEUP-DISS.algorithms.collaborative_filtering.neighborhood
+
+Submodules
+----------
+
+FEUP\-DISS.algorithms.collaborative\_filtering.collaborative\_filtering module
+------------------------------------------------------------------------------
+
+.. automodule:: FEUP-DISS.algorithms.collaborative_filtering.collaborative_filtering
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: FEUP-DISS.algorithms.collaborative_filtering
+   :members:
+   :undoc-members:
+   :show-inheritance:

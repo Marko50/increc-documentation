@@ -1,0 +1,46 @@
+FEUP\-DISS.test.algorithms.collaborative\_filtering.neighborhood.implicit\_feedback.item\_based package
+=======================================================================================================
+
+Submodules
+----------
+
+FEUP\-DISS.test.algorithms.collaborative\_filtering.neighborhood.implicit\_feedback.item\_based.item\_cf\_implicit\_test module
+-------------------------------------------------------------------------------------------------------------------------------
+
+.. automodule:: FEUP-DISS.test.algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_cf_implicit_test
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+FEUP\-DISS.test.algorithms.collaborative\_filtering.neighborhood.implicit\_feedback.item\_based.item\_clustering\_test module
+-----------------------------------------------------------------------------------------------------------------------------
+
+.. automodule:: FEUP-DISS.test.algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_clustering_test
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+FEUP\-DISS.test.algorithms.collaborative\_filtering.neighborhood.implicit\_feedback.item\_based.item\_lsh\_mh\_test module
+--------------------------------------------------------------------------------------------------------------------------
+
+.. automodule:: FEUP-DISS.test.algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_lsh_mh_test
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+FEUP\-DISS.test.algorithms.collaborative\_filtering.neighborhood.implicit\_feedback.item\_based.item\_neighborhood\_test module
+-------------------------------------------------------------------------------------------------------------------------------
+
+.. automodule:: FEUP-DISS.test.algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_neighborhood_test
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: FEUP-DISS.test.algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based
+   :members:
+   :undoc-members:
+   :show-inheritance:

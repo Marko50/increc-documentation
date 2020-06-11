@@ -1,0 +1,22 @@
+FEUP\-DISS.algorithms.collaborative\_filtering.matrix\_factorization.implicit\_feedback package
+===============================================================================================
+
+Submodules
+----------
+
+FEUP\-DISS.algorithms.collaborative\_filtering.matrix\_factorization.implicit\_feedback.matrix\_factorization module
+--------------------------------------------------------------------------------------------------------------------
+
+.. automodule:: FEUP-DISS.algorithms.collaborative_filtering.matrix_factorization.implicit_feedback.matrix_factorization
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: FEUP-DISS.algorithms.collaborative_filtering.matrix_factorization.implicit_feedback
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,18 @@
+FEUP\-DISS.evaluators package
+=============================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   FEUP-DISS.evaluators.prequential
+
+Module contents
+---------------
+
+.. automodule:: FEUP-DISS.evaluators
+   :members:
+   :undoc-members:
+   :show-inheritance:

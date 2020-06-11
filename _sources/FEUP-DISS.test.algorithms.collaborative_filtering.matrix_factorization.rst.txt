@@ -1,0 +1,19 @@
+FEUP\-DISS.test.algorithms.collaborative\_filtering.matrix\_factorization package
+=================================================================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   FEUP-DISS.test.algorithms.collaborative_filtering.matrix_factorization.explicit
+   FEUP-DISS.test.algorithms.collaborative_filtering.matrix_factorization.implicit
+
+Module contents
+---------------
+
+.. automodule:: FEUP-DISS.test.algorithms.collaborative_filtering.matrix_factorization
+   :members:
+   :undoc-members:
+   :show-inheritance:

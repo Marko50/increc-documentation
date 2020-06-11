@@ -1,0 +1,22 @@
+FEUP\-DISS.utils package
+========================
+
+Submodules
+----------
+
+FEUP\-DISS.utils.utils module
+-----------------------------
+
+.. automodule:: FEUP-DISS.utils.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: FEUP-DISS.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

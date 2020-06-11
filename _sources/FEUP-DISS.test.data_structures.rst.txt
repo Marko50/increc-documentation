@@ -1,0 +1,38 @@
+FEUP\-DISS.test.data\_structures package
+========================================
+
+Submodules
+----------
+
+FEUP\-DISS.test.data\_structures.dynamic\_array\_test module
+------------------------------------------------------------
+
+.. automodule:: FEUP-DISS.test.data_structures.dynamic_array_test
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+FEUP\-DISS.test.data\_structures.pair\_variances\_test module
+-------------------------------------------------------------
+
+.. automodule:: FEUP-DISS.test.data_structures.pair_variances_test
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+FEUP\-DISS.test.data\_structures.symmetric\_matrix\_test module
+---------------------------------------------------------------
+
+.. automodule:: FEUP-DISS.test.data_structures.symmetric_matrix_test
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: FEUP-DISS.test.data_structures
+   :members:
+   :undoc-members:
+   :show-inheritance:

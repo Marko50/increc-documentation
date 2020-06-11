@@ -1,0 +1,18 @@
+FEUP\-DISS.test.stream package
+==============================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   FEUP-DISS.test.stream.file_stream
+
+Module contents
+---------------
+
+.. automodule:: FEUP-DISS.test.stream
+   :members:
+   :undoc-members:
+   :show-inheritance:

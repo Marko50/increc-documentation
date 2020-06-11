@@ -1,0 +1,30 @@
+FEUP\-DISS.test.stream.file\_stream package
+===========================================
+
+Submodules
+----------
+
+FEUP\-DISS.test.stream.file\_stream.file\_stream\_explicit\_test module
+-----------------------------------------------------------------------
+
+.. automodule:: FEUP-DISS.test.stream.file_stream.file_stream_explicit_test
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+FEUP\-DISS.test.stream.file\_stream.file\_stream\_implicit\_test module
+-----------------------------------------------------------------------
+
+.. automodule:: FEUP-DISS.test.stream.file_stream.file_stream_implicit_test
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: FEUP-DISS.test.stream.file_stream
+   :members:
+   :undoc-members:
+   :show-inheritance:

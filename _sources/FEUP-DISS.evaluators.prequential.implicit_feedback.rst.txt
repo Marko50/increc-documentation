@@ -1,0 +1,22 @@
+FEUP\-DISS.evaluators.prequential.implicit\_feedback package
+============================================================
+
+Submodules
+----------
+
+FEUP\-DISS.evaluators.prequential.implicit\_feedback.prequential\_evaluator module
+----------------------------------------------------------------------------------
+
+.. automodule:: FEUP-DISS.evaluators.prequential.implicit_feedback.prequential_evaluator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: FEUP-DISS.evaluators.prequential.implicit_feedback
+   :members:
+   :undoc-members:
+   :show-inheritance:

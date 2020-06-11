@@ -1,0 +1,30 @@
+FEUP\-DISS.test.evaluators package
+==================================
+
+Submodules
+----------
+
+FEUP\-DISS.test.evaluators.explicit\_prequential\_test module
+-------------------------------------------------------------
+
+.. automodule:: FEUP-DISS.test.evaluators.explicit_prequential_test
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+FEUP\-DISS.test.evaluators.implicit\_prequential\_test module
+-------------------------------------------------------------
+
+.. automodule:: FEUP-DISS.test.evaluators.implicit_prequential_test
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: FEUP-DISS.test.evaluators
+   :members:
+   :undoc-members:
+   :show-inheritance:
