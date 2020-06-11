@@ -1,7 +1,7 @@
-data_structures
-===============
+algorithms
+==========
 
 .. toctree::
    :maxdepth: 4
 
-   data_structures
+   algorithms

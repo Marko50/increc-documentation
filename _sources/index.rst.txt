@@ -10,6 +10,13 @@ Welcome to increc's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   
+   algorithms
+   data_structures
+   stream
+   utils
+   graphic
+   modules
 
 
 Indices and tables

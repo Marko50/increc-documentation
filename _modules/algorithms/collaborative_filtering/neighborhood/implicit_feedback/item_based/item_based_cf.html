@@ -1,35 +1,48 @@
 
-<!DOCTYPE html>
+
+<!doctype html>
 
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf &#8212; increc 0.0.13 documentation</title>
-    <link rel="stylesheet" href="../../../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+    
     <script id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../../_static/jquery.js"></script>
     <script src="../../../../../../_static/underscore.js"></script>
     <script src="../../../../../../_static/doctools.js"></script>
     <script src="../../../../../../_static/language_data.js"></script>
+    <script src="../../../../../../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
   </head><body>
-      <div class="header" role="banner"><h1 class="heading"><a href="../../../../../../index.html">
-          <span>increc 0.0.13 documentation</span></a></h1>
-        <h2 class="heading"><span>algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf</span></h2>
-      </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
-      
-        <p>
-        <a class="uplink" href="../../../../../../index.html">Contents</a>
-        </p>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../../../index.html">increc 0.0.13 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../../../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf</a></li> 
+      </ul>
+    </div>  
 
-      </div>
-      <div class="content" role="main">
-        
-        
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
   <h1>Source code for algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">data_structures</span> <span class="kn">import</span> <span class="n">SymmetricMatrix</span><span class="p">,</span> <span class="n">DynamicArray</span>
 <span class="kn">from</span> <span class="nn">algorithms.collaborative_filtering</span> <span class="kn">import</span> <span class="n">CollaborativeFiltering</span>
@@ -39,9 +52,31 @@
 
 
 <div class="viewcode-block" id="ItemBasedImplicitCF"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF">[docs]</a><span class="k">class</span> <span class="nc">ItemBasedImplicitCF</span><span class="p">(</span><span class="n">CollaborativeFiltering</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        The implicit item based collaborative filtering class which focuses</span>
+<span class="sd">        on calculating and incrementing similarities.</span>
+<span class="sd">        Extends CollaborativeFiltering.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">intersections</span><span class="o">=</span><span class="p">[],</span> <span class="n">l1</span><span class="o">=</span><span class="p">[],</span> <span class="n">inv_index</span><span class="o">=</span><span class="p">{},</span>
             <span class="n">similarities</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            ItemBasedImplicitCF&#39;s constructor.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param matrix: The ratings matrix.</span>
+<span class="sd">            :type matrix: list</span>
+<span class="sd">            :param intersections: A matrix of item intersections.</span>
+<span class="sd">            :type intersections: SymmetricMatrix</span>
+<span class="sd">            :param l1: An array of items&#39; l1 norms.</span>
+<span class="sd">            :type l1: DynamicArray</span>
+<span class="sd">            :param inv_index: An inverted index of users to items.</span>
+<span class="sd">            :type inv_index: defaultdict(set)</span>
+<span class="sd">            :param similarities: A similarity matrix.</span>
+<span class="sd">            :type similarities: SymmetricMatrix</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">inv_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_model</span><span class="p">(</span>
             <span class="n">inv_index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_inv_index</span><span class="p">)</span>
@@ -53,6 +88,11 @@
             <span class="n">similarities</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_similarities</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_init_similarities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which computes and returns a</span>
+<span class="sd">            similarity matrix. Returns a SymmetricMatrix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">sims</span> <span class="o">=</span> <span class="n">SymmetricMatrix</span><span class="p">(</span>
             <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">),</span> <span class="n">value</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
@@ -62,6 +102,17 @@
         <span class="k">return</span> <span class="n">sims</span>
 
     <span class="k">def</span> <span class="nf">_init_similarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">another_item</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which computes and returns a similarity</span>
+<span class="sd">            between a pair of items.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param item: The first item.</span>
+<span class="sd">            :type item: int</span>
+<span class="sd">            :param another_item: The second item.</span>
+<span class="sd">            :type another_item: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">cosine_similarity</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">intersections_between</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">another_item</span><span class="p">),</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">l1_norm_of</span><span class="p">(</span><span class="n">item</span><span class="p">),</span>
@@ -69,6 +120,11 @@
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_init_intersections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            The function which computes and returns a</span>
+<span class="sd">            SymmetricMatrix item intersections.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">intersections</span> <span class="o">=</span> <span class="n">SymmetricMatrix</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">),</span> <span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inv_index</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
@@ -78,6 +134,11 @@
         <span class="k">return</span> <span class="n">intersections</span>
 
     <span class="k">def</span> <span class="nf">_init_l1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            The function which computes and returns a</span>
+<span class="sd">            DynamicArray which contains items&#39; l1 norms.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">l1_norms</span> <span class="o">=</span> <span class="n">DynamicArray</span><span class="p">(</span>
             <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">],</span> <span class="n">default_value</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inv_index</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
@@ -86,6 +147,12 @@
         <span class="k">return</span> <span class="n">l1_norms</span>
 
     <span class="k">def</span> <span class="nf">_init_inv_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            The function which computes and returns a</span>
+<span class="sd">            defaultdict(set) inverted index of users to</span>
+<span class="sd">            their rated items.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">inv_index</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
@@ -139,15 +206,40 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">inv_index</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span></div></div>
 </pre></div>
 
+            <div class="clearer"></div>
+          </div>
+        </div>
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
-      
-        <p>
-        <a class="uplink" href="../../../../../../index.html">Contents</a>
-        </p>
-
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
       </div>
-
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../../../index.html">increc 0.0.13 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../../../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf</a></li> 
+      </ul>
+    </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Fernando Fernandes.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.0.

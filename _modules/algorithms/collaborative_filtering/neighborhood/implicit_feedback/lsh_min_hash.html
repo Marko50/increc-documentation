@@ -1,35 +1,48 @@
 
-<!DOCTYPE html>
+
+<!doctype html>
 
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>algorithms.collaborative_filtering.neighborhood.implicit_feedback.lsh_min_hash &#8212; increc 0.0.13 documentation</title>
-    <link rel="stylesheet" href="../../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    
     <script id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
     <script src="../../../../../_static/language_data.js"></script>
+    <script src="../../../../../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
   </head><body>
-      <div class="header" role="banner"><h1 class="heading"><a href="../../../../../index.html">
-          <span>increc 0.0.13 documentation</span></a></h1>
-        <h2 class="heading"><span>algorithms.collaborative_filtering.neighborhood.implicit_feedback.lsh_min_hash</span></h2>
-      </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
-      
-        <p>
-        <a class="uplink" href="../../../../../index.html">Contents</a>
-        </p>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">increc 0.0.13 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">algorithms.collaborative_filtering.neighborhood.implicit_feedback.lsh_min_hash</a></li> 
+      </ul>
+    </div>  
 
-      </div>
-      <div class="content" role="main">
-        
-        
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
   <h1>Source code for algorithms.collaborative_filtering.neighborhood.implicit_feedback.lsh_min_hash</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">algorithms.collaborative_filtering</span> <span class="kn">import</span> <span class="n">CollaborativeFiltering</span>
 <span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">permutation</span>
@@ -38,9 +51,30 @@
 
 
 <div class="viewcode-block" id="LSHMinHash"><a class="viewcode-back" href="../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.lsh_min_hash.LSHMinHash">[docs]</a><span class="k">class</span> <span class="nc">LSHMinHash</span><span class="p">(</span><span class="n">CollaborativeFiltering</span><span class="p">):</span>
-
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A class which hashes elements into buckets according</span>
+<span class="sd">        to the MinHash family. Extends CollaborativeFiltering.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">signature_matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">buckets</span><span class="o">=</span><span class="p">[],</span> <span class="n">n_perms</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
                  <span class="n">n_bands</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            LSHMinHash&#39;s constructor.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param matrix: A ratings matrix.</span>
+<span class="sd">            :type matrix: list</span>
+<span class="sd">            :param signature_matrix: The signature matrix which contains</span>
+<span class="sd">                elements&#39; signatures in the columns.</span>
+<span class="sd">            :type signature_matrix: DynamicArray</span>
+<span class="sd">            :param buckets: The buckets where elements are hashed into.</span>
+<span class="sd">            :type buckets: defaultdict(set)</span>
+<span class="sd">            :param n_perms: Number of permutations for hashing.</span>
+<span class="sd">            :type n_perms: int</span>
+<span class="sd">            :param n_bands: Number of bands which are used for bucketing.</span>
+<span class="sd">            :type n_bands: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_permutations</span> <span class="o">=</span> <span class="n">n_perms</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_bands</span> <span class="o">=</span> <span class="n">n_bands</span>
@@ -50,10 +84,23 @@
             <span class="n">buckets</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_buckets</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_init_signature_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which computes and returns the signature matrix</span>
+<span class="sd">            which is a DynamicArray.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">signatures</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_signatures</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">DynamicArray</span><span class="p">(</span><span class="n">signatures</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">DynamicArray</span><span class="p">())</span>
 
     <span class="k">def</span> <span class="nf">_calculate_signatures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which calculates signatures for a matrix.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param matrix: A ratings matrix</span>
+<span class="sd">            :type matrix: DynamicArray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">signatures</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_permutations</span><span class="p">):</span>
             <span class="n">permutated_matrix</span> <span class="o">=</span> <span class="n">DynamicArray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_permutation</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
@@ -62,6 +109,15 @@
         <span class="k">return</span> <span class="n">signatures</span>
 
     <span class="k">def</span> <span class="nf">_generate_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perm_matrix</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which generates and returns a signature</span>
+<span class="sd">            for a permutated matrix. Returns a DynamicArray.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param perm_matrix: A permutated matrix.</span>
+<span class="sd">            :type perm_matrix: DynamicArray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">signature</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">():</span>
             <span class="n">vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="n">perm_matrix</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
@@ -70,9 +126,22 @@
         <span class="k">return</span> <span class="n">DynamicArray</span><span class="p">(</span><span class="n">signature</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_min_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elem</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which returns the min hash for an element.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param elem: The element to calculate the min hash for.</span>
+<span class="sd">            :type elem: DynamicArray.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">next</span><span class="p">((</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_init_buckets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which computes and returns a defaultdict(set)</span>
+<span class="sd">            object, containing the bucketed items.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">buckets</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">():</span>
             <span class="n">vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signature_matrix</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
@@ -82,37 +151,97 @@
         <span class="k">return</span> <span class="n">buckets</span>
 
     <span class="k">def</span> <span class="nf">_update_buckets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which updates the buckets.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param identifier: An element identifier.</span>
+<span class="sd">            :type identifier: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">signature_matrix</span><span class="p">,</span> <span class="n">identifier</span><span class="p">)</span>
         <span class="n">bands</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group_by_bands</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">bands</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">buckets</span><span class="p">[</span><span class="n">band</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">identifier</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_group_by_bands</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which groups an element by the number</span>
+<span class="sd">            of bands.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param vector: The element to be grouped</span>
+<span class="sd">            :type vector: DynamicArray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">vector</span><span class="p">[</span><span class="n">c</span><span class="p">:</span><span class="n">c</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_bands</span><span class="p">])</span>
                 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">vector</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_bands</span><span class="p">)]</span>
 
     <span class="k">def</span> <span class="nf">_update_signature_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which updates the signature matrix on a</span>
+<span class="sd">            column.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param identifier: The column index.</span>
+<span class="sd">            :type identifier: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">,</span> <span class="n">identifier</span><span class="p">)</span>
         <span class="n">sign</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_min_hash</span><span class="p">(</span><span class="n">permutation</span><span class="p">(</span><span class="n">vector</span><span class="p">))</span>
                 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_permutations</span><span class="p">)]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">signature_matrix</span><span class="o">.</span><span class="n">set_col</span><span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="n">sign</span><span class="p">)</span>
 
 <div class="viewcode-block" id="LSHMinHash.new_rating"><a class="viewcode-back" href="../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.lsh_min_hash.LSHMinHash.new_rating">[docs]</a>    <span class="k">def</span> <span class="nf">new_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            The function which processes a new iteration. Expects a tuple</span>
+<span class="sd">            (user, item)</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param rating: The rating tuple.</span>
+<span class="sd">            :type rating: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span> <span class="o">=</span> <span class="n">rating</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item_id</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span></div></div>
 </pre></div>
 
+            <div class="clearer"></div>
+          </div>
+        </div>
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
-      
-        <p>
-        <a class="uplink" href="../../../../../index.html">Contents</a>
-        </p>
-
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
       </div>
-
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">increc 0.0.13 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">algorithms.collaborative_filtering.neighborhood.implicit_feedback.lsh_min_hash</a></li> 
+      </ul>
+    </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Fernando Fernandes.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.0.

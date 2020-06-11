@@ -1,35 +1,57 @@
 
-<!DOCTYPE html>
+
+<!doctype html>
 
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>algorithms.collaborative_filtering.matrix_factorization package &#8212; increc 0.0.13 documentation</title>
-    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/language_data.js"></script>
+    <script src="_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback package" href="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html" />
+    <link rel="prev" title="algorithms.collaborative_filtering package" href="algorithms.collaborative_filtering.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
   </head><body>
-      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
-          <span>increc 0.0.13 documentation</span></a></h1>
-        <h2 class="heading"><span>algorithms.collaborative_filtering.matrix_factorization package</span></h2>
-      </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
-      
-        <p>
-        <a class="uplink" href="index.html">Contents</a>
-        </p>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html" title="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="algorithms.collaborative_filtering.html" title="algorithms.collaborative_filtering package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">increc 0.0.13 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="algorithms.html" >algorithms package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="algorithms.collaborative_filtering.html" accesskey="U">algorithms.collaborative_filtering package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">algorithms.collaborative_filtering.matrix_factorization package</a></li> 
+      </ul>
+    </div>  
 
-      </div>
-      <div class="content" role="main">
-        
-        
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
   <div class="section" id="algorithms-collaborative-filtering-matrix-factorization-package">
 <h1>algorithms.collaborative_filtering.matrix_factorization package<a class="headerlink" href="#algorithms-collaborative-filtering-matrix-factorization-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="subpackages">
@@ -62,15 +84,66 @@
 <dt id="algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization">
 <em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.</code><code class="sig-name descname">MatrixFactorization</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span></em>, <em class="sig-param"><span class="n">u</span></em>, <em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">lf</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="algorithms.collaborative_filtering.html#algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering" title="algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering</span></code></a></p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Matrix factorization general class which extends
+CollaborativeFiltering.</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt id="algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization.predict">
 <code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">item_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization.predict" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which returns a predition of a user’s rating to
+an item.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param user_id</dt>
+<dd class="field-odd"><p>The user identifier.</p>
+</dd>
+<dt class="field-even">type user_id</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param item_id</dt>
+<dd class="field-odd"><p>The item identifier.</p>
+</dd>
+<dt class="field-even">type item_id</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization.recommend">
 <code class="sig-name descname">recommend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">n_rec</span></em>, <em class="sig-param"><span class="n">heuristic</span></em>, <em class="sig-param"><span class="n">repeated</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization.recommend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization.recommend" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl>
+<dt>Description</dt><dd><p>A function which returns recommendations for a user.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param user_id</dt>
+<dd class="field-odd"><p>The user identifier.</p>
+</dd>
+<dt class="field-even">type user_id</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param n_rec</dt>
+<dd class="field-odd"><p>The number of items to recommend.</p>
+</dd>
+<dt class="field-even">type n_rec</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param heuristic</dt>
+<dd class="field-odd"><p>A function which takes a item and computes</p>
+</dd>
+</dl>
+<p>a value to be used while sorting.
+:type heuristic: function
+:param repeated: Can be previously rated products be recommended.
+:type repeated: boolean</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -81,6 +154,7 @@
 <dt id="algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD">
 <em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.</code><code class="sig-name descname">SGD</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lr</span></em>, <em class="sig-param"><span class="n">reg</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/stochastic_gradient_descent.html#SGD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Stochastic Gradient Descent for matrix factorization.</p>
 </dd></dl>
 
 </div>
@@ -90,15 +164,66 @@
 <dt id="algorithms.collaborative_filtering.matrix_factorization.MatrixFactorization">
 <em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.matrix_factorization.</code><code class="sig-name descname">MatrixFactorization</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span></em>, <em class="sig-param"><span class="n">u</span></em>, <em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">lf</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.MatrixFactorization" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="algorithms.collaborative_filtering.html#algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering" title="algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering</span></code></a></p>
+<dl class="simple">
+<dt>Description</dt><dd><p>Matrix factorization general class which extends
+CollaborativeFiltering.</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt id="algorithms.collaborative_filtering.matrix_factorization.MatrixFactorization.predict">
 <code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">item_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.MatrixFactorization.predict" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which returns a predition of a user’s rating to
+an item.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param user_id</dt>
+<dd class="field-odd"><p>The user identifier.</p>
+</dd>
+<dt class="field-even">type user_id</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param item_id</dt>
+<dd class="field-odd"><p>The item identifier.</p>
+</dd>
+<dt class="field-even">type item_id</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="algorithms.collaborative_filtering.matrix_factorization.MatrixFactorization.recommend">
 <code class="sig-name descname">recommend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">n_rec</span></em>, <em class="sig-param"><span class="n">heuristic</span></em>, <em class="sig-param"><span class="n">repeated</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization.recommend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.MatrixFactorization.recommend" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl>
+<dt>Description</dt><dd><p>A function which returns recommendations for a user.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param user_id</dt>
+<dd class="field-odd"><p>The user identifier.</p>
+</dd>
+<dt class="field-even">type user_id</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param n_rec</dt>
+<dd class="field-odd"><p>The number of items to recommend.</p>
+</dd>
+<dt class="field-even">type n_rec</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param heuristic</dt>
+<dd class="field-odd"><p>A function which takes a item and computes</p>
+</dd>
+</dl>
+<p>a value to be used while sorting.
+:type heuristic: function
+:param repeated: Can be previously rated products be recommended.
+:type repeated: boolean</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -106,21 +231,79 @@
 <dt id="algorithms.collaborative_filtering.matrix_factorization.SGD">
 <em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.matrix_factorization.</code><code class="sig-name descname">SGD</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lr</span></em>, <em class="sig-param"><span class="n">reg</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/stochastic_gradient_descent.html#SGD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.SGD" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Stochastic Gradient Descent for matrix factorization.</p>
 </dd></dl>
 
 </div>
 </div>
 
 
+            <div class="clearer"></div>
+          </div>
+        </div>
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
-      
-        <p>
-        <a class="uplink" href="index.html">Contents</a>
-        </p>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">algorithms.collaborative_filtering.matrix_factorization package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-algorithms.collaborative_filtering.matrix_factorization.matrix_factorization">algorithms.collaborative_filtering.matrix_factorization.matrix_factorization module</a></li>
+<li><a class="reference internal" href="#module-algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent">algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent module</a></li>
+<li><a class="reference internal" href="#module-algorithms.collaborative_filtering.matrix_factorization">Module contents</a></li>
+</ul>
+</li>
+</ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="algorithms.collaborative_filtering.html"
+                        title="previous chapter">algorithms.collaborative_filtering package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html"
+                        title="next chapter">algorithms.collaborative_filtering.matrix_factorization.explicit_feedback package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/algorithms.collaborative_filtering.matrix_factorization.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
       </div>
-
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html" title="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="algorithms.collaborative_filtering.html" title="algorithms.collaborative_filtering package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">increc 0.0.13 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="algorithms.html" >algorithms package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="algorithms.collaborative_filtering.html" >algorithms.collaborative_filtering package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">algorithms.collaborative_filtering.matrix_factorization package</a></li> 
+      </ul>
+    </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Fernando Fernandes.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.0.
