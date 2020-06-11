@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>algorithms.collaborative_filtering.neighborhood.item_neighborhood &#8212; increc 0.0.13 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../../../index.html">
+          <span>increc 0.0.13 documentation</span></a></h1>
+        <h2 class="heading"><span>algorithms.collaborative_filtering.neighborhood.item_neighborhood</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        <a class="uplink" href="../../../../index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <h1>Source code for algorithms.collaborative_filtering.neighborhood.item_neighborhood</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.neighborhood</span> <span class="kn">import</span> <span class="n">NeighborhoodCF</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+
+
+<div class="viewcode-block" id="ItemNeighborhood"><a class="viewcode-back" href="../../../../algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.item_neighborhood.ItemNeighborhood">[docs]</a><span class="k">class</span> <span class="nc">ItemNeighborhood</span><span class="p">(</span><span class="n">NeighborhoodCF</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">neighbors</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">neighbors</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_init_neighborhood</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_init_neighborhood</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ItemNeighborhood.parallel_process_stream"><a class="viewcode-back" href="../../../../algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.item_neighborhood.ItemNeighborhood.parallel_process_stream">[docs]</a>    <span class="k">def</span> <span class="nf">parallel_process_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">n_cores</span><span class="p">):</span>
+        <span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_cores</span><span class="p">)]</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_split_stream</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">n_cores</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_models</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="n">parts</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_merge_models</span><span class="p">(</span><span class="n">models</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_split_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">n_cores</span><span class="p">):</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">size</span> <span class="o">&lt;</span> <span class="n">n_cores</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Number of cores superior to number of elements in stream&quot;</span><span class="p">)</span>
+        <span class="n">int_division</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">size</span> <span class="o">/</span> <span class="n">n_cores</span><span class="p">)</span>
+        <span class="n">remainder</span> <span class="o">=</span> <span class="n">size</span> <span class="o">%</span> <span class="n">n_cores</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">stream</span><span class="p">[</span><span class="n">core</span> <span class="o">*</span> <span class="n">int_division</span><span class="p">:(</span>
+            <span class="n">core</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">int_division</span><span class="p">]</span> <span class="k">for</span> <span class="n">core</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_cores</span><span class="p">)]</span>
+        <span class="n">parts</span> <span class="o">+=</span> <span class="n">stream</span><span class="p">[(</span>
+            <span class="n">n_cores</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">int_division</span><span class="p">:</span><span class="n">n_cores</span> <span class="o">*</span> <span class="n">int_division</span> <span class="o">+</span> <span class="n">remainder</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">parts</span>
+
+    <span class="k">def</span> <span class="nf">_update_models</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">parts</span><span class="p">):</span>
+        <span class="n">threads</span> <span class="o">=</span> <span class="p">[</span><span class="n">Thread</span><span class="p">(</span>
+            <span class="n">target</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">process_stream</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span>
+                <span class="n">part</span><span class="p">,</span> <span class="p">))</span> <span class="k">for</span> <span class="n">part</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="n">models</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_merge_models</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">models</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_merge_items</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_merge_users</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_merge_intersections</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_merge_l1_norms</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_merge_inverted_index</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_merge_matrix</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">similarities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_similarities</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">neighbors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_neighborhood</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_merge_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">user_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">item_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_merge_intersections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">item_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">another_item_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">item_id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">intersections</span><span class="p">[(</span>
+                    <span class="n">item_id</span><span class="p">,</span> <span class="n">another_item_id</span><span class="p">)]</span> <span class="o">+=</span> <span class="n">model</span><span class="o">.</span><span class="n">intersections_between</span><span class="p">(</span>
+                        <span class="n">item_id</span><span class="p">,</span> <span class="n">another_item_id</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_merge_l1_norms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">item_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">l1_norms</span><span class="p">[</span><span class="n">item_id</span><span class="p">]</span> <span class="o">+=</span> <span class="n">model</span><span class="o">.</span><span class="n">l1_norm_of</span><span class="p">(</span><span class="n">item_id</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_merge_items</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_merge_users</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">users</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">users</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_merge_inverted_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">user_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inv_index</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inv_index_of</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="p">(</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">inv_index_of</span><span class="p">(</span><span class="n">user_id</span><span class="p">))</span></div>
+</pre></div>
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        <a class="uplink" href="../../../../index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Fernando Fernandes.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.0.
+    </div>
+  </body>
+</html>

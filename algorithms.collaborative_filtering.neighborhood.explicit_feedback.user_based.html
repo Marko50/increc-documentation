@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based package &#8212; increc 0.0.13 documentation</title>
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>increc 0.0.13 documentation</span></a></h1>
+        <h2 class="heading"><span>algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based package</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <div class="section" id="algorithms-collaborative-filtering-neighborhood-explicit-feedback-user-based-package">
+<h1>algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based package<a class="headerlink" href="#algorithms-collaborative-filtering-neighborhood-explicit-feedback-user-based-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf">
+<span id="algorithms-collaborative-filtering-neighborhood-explicit-feedback-user-based-user-based-cf-module"></span><h2>algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf module<a class="headerlink" href="#module-algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF">
+<em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.</code><code class="sig-name descname">UserBasedExplicitCF</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">similarities</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">avg_ratings</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">co_rated</span><span class="o">=</span><span class="default_value">[]</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_cf.html#UserBasedExplicitCF"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.user_based_cf.UserBasedCF" title="algorithms.collaborative_filtering.neighborhood.user_based_cf.UserBasedCF"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.user_based_cf.UserBasedCF</span></code></a></p>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.avg_rating">
+<code class="sig-name descname">avg_rating</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_cf.html#UserBasedExplicitCF.avg_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.avg_rating" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.covariance_between">
+<code class="sig-name descname">covariance_between</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user</span></em>, <em class="sig-param"><span class="n">another_user</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_cf.html#UserBasedExplicitCF.covariance_between"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.covariance_between" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.new_rating">
+<code class="sig-name descname">new_rating</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rating</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_cf.html#UserBasedExplicitCF.new_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.new_rating" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">item_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_cf.html#UserBasedExplicitCF.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.recommend">
+<code class="sig-name descname">recommend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">n_rec</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_cf.html#UserBasedExplicitCF.recommend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.recommend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.similarity_between">
+<code class="sig-name descname">similarity_between</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user</span></em>, <em class="sig-param"><span class="n">another_user</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_cf.html#UserBasedExplicitCF.similarity_between"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.similarity_between" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.variance">
+<code class="sig-name descname">variance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user</span></em>, <em class="sig-param"><span class="n">another_user</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_cf.html#UserBasedExplicitCF.variance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.variance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_clustering">
+<span id="algorithms-collaborative-filtering-neighborhood-explicit-feedback-user-based-user-based-clustering-module"></span><h2>algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_clustering module<a class="headerlink" href="#module-algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_clustering" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_clustering.UserBasedClustering">
+<em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_clustering.</code><code class="sig-name descname">UserBasedClustering</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">similarities</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">co_rated</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">neighbors</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">n_neighbors</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">treshold</span><span class="o">=</span><span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">clusters</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">centroids</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">cluster_map</span><span class="o">=</span><span class="default_value">[]</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_clustering.html#UserBasedClustering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_clustering.UserBasedClustering" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF" title="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF</span></code></a>, <a class="reference internal" href="algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.user_clustering.UserClustering" title="algorithms.collaborative_filtering.neighborhood.user_clustering.UserClustering"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.user_clustering.UserClustering</span></code></a></p>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_clustering.UserBasedClustering.new_rating">
+<code class="sig-name descname">new_rating</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rating</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_clustering.html#UserBasedClustering.new_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_clustering.UserBasedClustering.new_rating" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_neighborhood">
+<span id="algorithms-collaborative-filtering-neighborhood-explicit-feedback-user-based-user-based-neighborhood-module"></span><h2>algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_neighborhood module<a class="headerlink" href="#module-algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_neighborhood" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_neighborhood.UserBasedNeighborhood">
+<em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_neighborhood.</code><code class="sig-name descname">UserBasedNeighborhood</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">similarities</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">avg_ratings</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">co_rated</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">neighbors</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">n_neighbors</span><span class="o">=</span><span class="default_value">5</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_neighborhood.html#UserBasedNeighborhood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_neighborhood.UserBasedNeighborhood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF" title="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF</span></code></a>, <a class="reference internal" href="algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.user_neighborhood.UserNeighborhood" title="algorithms.collaborative_filtering.neighborhood.user_neighborhood.UserNeighborhood"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.user_neighborhood.UserNeighborhood</span></code></a></p>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_neighborhood.UserBasedNeighborhood.new_rating">
+<code class="sig-name descname">new_rating</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rating</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_neighborhood.html#UserBasedNeighborhood.new_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_neighborhood.UserBasedNeighborhood.new_rating" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.UserBasedClustering">
+<em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.</code><code class="sig-name descname">UserBasedClustering</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">similarities</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">co_rated</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">neighbors</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">n_neighbors</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">treshold</span><span class="o">=</span><span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">clusters</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">centroids</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">cluster_map</span><span class="o">=</span><span class="default_value">[]</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_clustering.html#UserBasedClustering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.UserBasedClustering" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF" title="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF</span></code></a>, <a class="reference internal" href="algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.user_clustering.UserClustering" title="algorithms.collaborative_filtering.neighborhood.user_clustering.UserClustering"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.user_clustering.UserClustering</span></code></a></p>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.UserBasedClustering.new_rating">
+<code class="sig-name descname">new_rating</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rating</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_clustering.html#UserBasedClustering.new_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.UserBasedClustering.new_rating" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.UserBasedNeighborhood">
+<em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.</code><code class="sig-name descname">UserBasedNeighborhood</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">similarities</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">avg_ratings</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">co_rated</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">neighbors</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">n_neighbors</span><span class="o">=</span><span class="default_value">5</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_neighborhood.html#UserBasedNeighborhood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.UserBasedNeighborhood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF" title="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF</span></code></a>, <a class="reference internal" href="algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.user_neighborhood.UserNeighborhood" title="algorithms.collaborative_filtering.neighborhood.user_neighborhood.UserNeighborhood"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.user_neighborhood.UserNeighborhood</span></code></a></p>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.UserBasedNeighborhood.new_rating">
+<code class="sig-name descname">new_rating</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rating</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/explicit_feedback/user_based/user_based_neighborhood.html#UserBasedNeighborhood.new_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.UserBasedNeighborhood.new_rating" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Fernando Fernandes.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.0.
+    </div>
+  </body>
+</html>

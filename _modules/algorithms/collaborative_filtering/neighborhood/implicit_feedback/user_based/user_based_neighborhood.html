@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_neighborhood &#8212; increc 0.0.13 documentation</title>
+    <link rel="stylesheet" href="../../../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../_static/jquery.js"></script>
+    <script src="../../../../../../_static/underscore.js"></script>
+    <script src="../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../../../../../index.html">
+          <span>increc 0.0.13 documentation</span></a></h1>
+        <h2 class="heading"><span>algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_neighborhood</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        <a class="uplink" href="../../../../../../index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <h1>Source code for algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_neighborhood</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.user_based_cf</span> <span class="kn">import</span> <span class="n">UserBasedImplicitCF</span>
+<span class="kn">from</span> <span class="nn">algorithms.collaborative_filtering.neighborhood</span> <span class="kn">import</span> <span class="n">UserNeighborhood</span>
+
+
+<div class="viewcode-block" id="UserBasedNeighborhood"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_neighborhood.UserBasedNeighborhood">[docs]</a><span class="k">class</span> <span class="nc">UserBasedNeighborhood</span><span class="p">(</span><span class="n">UserBasedImplicitCF</span><span class="p">,</span> <span class="n">UserNeighborhood</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">similarities</span><span class="o">=</span><span class="p">[],</span> <span class="n">co_rated</span><span class="o">=</span><span class="p">[],</span>
+                 <span class="n">neighbors</span><span class="o">=</span><span class="p">[],</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">similarities</span><span class="p">,</span> <span class="n">co_rated</span><span class="p">)</span>
+        <span class="n">UserNeighborhood</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">neighbors</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">)</span>
+
+<div class="viewcode-block" id="UserBasedNeighborhood.new_rating"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_neighborhood.UserBasedNeighborhood.new_rating">[docs]</a>    <span class="k">def</span> <span class="nf">new_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">new_rating</span><span class="p">(</span><span class="n">rating</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">neighbors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_neighborhood</span><span class="p">()</span></div></div>
+</pre></div>
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        <a class="uplink" href="../../../../../../index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Fernando Fernandes.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.0.
+    </div>
+  </body>
+</html>

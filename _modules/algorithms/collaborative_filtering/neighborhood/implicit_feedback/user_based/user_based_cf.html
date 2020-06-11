@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_cf &#8212; increc 0.0.13 documentation</title>
+    <link rel="stylesheet" href="../../../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../_static/jquery.js"></script>
+    <script src="../../../../../../_static/underscore.js"></script>
+    <script src="../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../../../../../index.html">
+          <span>increc 0.0.13 documentation</span></a></h1>
+        <h2 class="heading"><span>algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_cf</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        <a class="uplink" href="../../../../../../index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <h1>Source code for algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_cf</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">algorithms.collaborative_filtering.neighborhood</span> <span class="kn">import</span> <span class="n">UserBasedCF</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">cosine_similarity</span> <span class="k">as</span> <span class="n">cos_sim</span>
+
+
+<div class="viewcode-block" id="UserBasedImplicitCF"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_cf.UserBasedImplicitCF">[docs]</a><span class="k">class</span> <span class="nc">UserBasedImplicitCF</span><span class="p">(</span><span class="n">UserBasedCF</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">similarities</span><span class="o">=</span><span class="p">[],</span> <span class="n">co_rated</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">co_rated</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">similarity_default</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">similarities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_model</span><span class="p">(</span>
+            <span class="n">similarities</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_similarities</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_init_similarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">):</span>
+        <span class="n">number_rated_items_user</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">co_rated_between</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">))</span>
+        <span class="n">number_rated_items_another_user</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">co_rated_between</span><span class="p">(</span>
+            <span class="n">another_user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">))</span>
+        <span class="n">number_of_co_rated_items</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">co_rated_between</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span>
+                                                             <span class="n">another_user_id</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">cos_sim</span><span class="p">(</span>
+            <span class="n">number_of_co_rated_items</span><span class="p">,</span> <span class="n">number_rated_items_user</span><span class="p">,</span>
+            <span class="n">number_rated_items_another_user</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_update_similarities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">):</span>
+        <span class="n">members</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">difference</span><span class="p">({</span><span class="n">user_id</span><span class="p">})</span>
+        <span class="k">for</span> <span class="n">another_user_id</span> <span class="ow">in</span> <span class="n">members</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">similarities</span><span class="p">[(</span>
+                <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_similarity</span><span class="p">(</span>
+                    <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">)</span>
+
+<div class="viewcode-block" id="UserBasedImplicitCF.new_rating"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_cf.UserBasedImplicitCF.new_rating">[docs]</a>    <span class="k">def</span> <span class="nf">new_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating</span><span class="p">):</span>
+        <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span> <span class="o">=</span> <span class="n">rating</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_co_rated</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_similarities</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserBasedImplicitCF.recommend"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_cf.UserBasedImplicitCF.recommend">[docs]</a>    <span class="k">def</span> <span class="nf">recommend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">n_products</span><span class="p">):</span>
+        <span class="n">item_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span>
+            <span class="n">user_id</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">item_ids</span><span class="p">,</span>
+                      <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item_id</span><span class="p">:</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">_activation_weight</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">))[</span><span class="o">-</span><span class="n">n_products</span><span class="p">:]</span></div>
+
+    <span class="k">def</span> <span class="nf">_activation_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">):</span>
+        <span class="n">nbs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">neighborhood_of</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+        <span class="n">len_nbs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nbs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">similarity_between</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">another_user_id</span> <span class="ow">in</span> <span class="n">nbs</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">another_user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span>
+                    <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">])</span> <span class="o">/</span> <span class="n">len_nbs</span> <span class="k">if</span> <span class="n">len_nbs</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span></div>
+</pre></div>
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        <a class="uplink" href="../../../../../../index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Fernando Fernandes.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.0.
+    </div>
+  </body>
+</html>

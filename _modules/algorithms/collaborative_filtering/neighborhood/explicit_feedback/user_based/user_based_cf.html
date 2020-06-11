@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf &#8212; increc 0.0.13 documentation</title>
+    <link rel="stylesheet" href="../../../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../_static/jquery.js"></script>
+    <script src="../../../../../../_static/underscore.js"></script>
+    <script src="../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../../../../../index.html">
+          <span>increc 0.0.13 documentation</span></a></h1>
+        <h2 class="heading"><span>algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        <a class="uplink" href="../../../../../../index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <h1>Source code for algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">algorithms.collaborative_filtering.neighborhood</span> <span class="kn">import</span> <span class="n">UserBasedCF</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">pearson_correlation_terms</span><span class="p">,</span> <span class="n">pearson_correlation</span><span class="p">,</span> <span class="n">avg</span>
+<span class="kn">from</span> <span class="nn">data_structures</span> <span class="kn">import</span> <span class="n">PairVariances</span>
+<span class="kn">from</span> <span class="nn">data_structures</span> <span class="kn">import</span> <span class="n">DynamicArray</span>
+
+<span class="n">COVARIANCE_KEY</span> <span class="o">=</span> <span class="s2">&quot;covariance&quot;</span>
+<span class="n">VARIANCES_KEY</span> <span class="o">=</span> <span class="s2">&quot;variances&quot;</span>
+<span class="n">SIM_VALUE_KEY</span> <span class="o">=</span> <span class="s2">&quot;similarity_value&quot;</span>
+
+
+<div class="viewcode-block" id="UserBasedExplicitCF"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF">[docs]</a><span class="k">class</span> <span class="nc">UserBasedExplicitCF</span><span class="p">(</span><span class="n">UserBasedCF</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">similarities</span><span class="o">=</span><span class="p">[],</span> <span class="n">avg_ratings</span><span class="o">=</span><span class="nb">dict</span><span class="p">(),</span>
+                 <span class="n">co_rated</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">co_rated</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">similarity_default</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="n">COVARIANCE_KEY</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="n">VARIANCES_KEY</span><span class="p">:</span> <span class="n">PairVariances</span><span class="p">(),</span>
+                <span class="n">SIM_VALUE_KEY</span><span class="p">:</span> <span class="mi">0</span>
+            <span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">avg_ratings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_model</span><span class="p">(</span>
+            <span class="n">avg_ratings</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_avg_ratings</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">similarities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_model</span><span class="p">(</span>
+            <span class="n">similarities</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_similarities</span><span class="p">)</span>
+
+    <span class="c1"># initializing the average ratings</span>
+    <span class="k">def</span> <span class="nf">_init_avg_ratings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">avg_r</span> <span class="o">=</span> <span class="n">DynamicArray</span><span class="p">(</span><span class="n">default_value</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">user</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">):</span>
+            <span class="n">avg_r</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">avg</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">avg_r</span>
+
+    <span class="c1"># Assuming user in rows and items in columns</span>
+    <span class="k">def</span> <span class="nf">_init_similarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span>
+        <span class="n">another_user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">another_user_id</span><span class="p">]</span>
+        <span class="n">sim</span> <span class="o">=</span> <span class="n">pearson_correlation_terms</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">co_rated_between</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">),</span>
+            <span class="n">user</span><span class="p">,</span> <span class="n">another_user</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">avg_rating</span><span class="p">(</span><span class="n">user_id</span><span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">avg_rating</span><span class="p">(</span><span class="n">another_user_id</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_similarities</span><span class="p">(</span>
+            <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">,</span> <span class="n">sim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sim</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">sim</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+
+    <span class="c1"># (user_id, item_id, new_rating, new_avg_rating)</span>
+    <span class="k">def</span> <span class="nf">_unpack_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">):</span>
+        <span class="n">user_id</span> <span class="o">=</span> <span class="n">rating</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">current_item_id</span> <span class="o">=</span> <span class="n">rating</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">new_rating</span> <span class="o">=</span> <span class="n">rating</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">new_avg_rating</span> <span class="o">=</span> <span class="n">rating</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">another_user_avg_rating</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">avg_rating</span><span class="p">(</span><span class="n">another_user_id</span><span class="p">)</span>
+        <span class="n">another_user_ratings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">another_user_id</span><span class="p">]</span>
+        <span class="n">co_rated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">co_rated_between</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">)</span>
+        <span class="n">old_avg_rating</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">avg_rating</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+        <span class="n">difference_avg</span> <span class="o">=</span> <span class="n">new_avg_rating</span> <span class="o">-</span> <span class="n">old_avg_rating</span>
+        <span class="n">co_rated_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">co_rated</span><span class="p">)</span>
+        <span class="n">another_user_rating</span> <span class="o">=</span> <span class="n">another_user_ratings</span><span class="p">[</span><span class="n">current_item_id</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">current_item_id</span><span class="p">,</span> <span class="n">new_rating</span><span class="p">,</span> <span class="n">new_avg_rating</span><span class="p">,</span>
+                <span class="n">another_user_avg_rating</span><span class="p">,</span> <span class="n">another_user_ratings</span><span class="p">,</span> <span class="n">co_rated</span><span class="p">,</span>
+                <span class="n">old_avg_rating</span><span class="p">,</span> <span class="n">difference_avg</span><span class="p">,</span> <span class="n">co_rated_length</span><span class="p">,</span>
+                <span class="n">another_user_rating</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_update_similarities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span>
+                             <span class="n">variance_first</span><span class="p">,</span> <span class="n">variance_second</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+        <span class="n">sim</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">sim</span><span class="p">[</span><span class="n">COVARIANCE_KEY</span><span class="p">]</span> <span class="o">=</span> <span class="n">cov</span>
+        <span class="n">sim</span><span class="p">[</span><span class="n">VARIANCES_KEY</span><span class="p">]</span> <span class="o">=</span> <span class="n">PairVariances</span><span class="p">()</span>
+        <span class="n">sim</span><span class="p">[</span><span class="n">VARIANCES_KEY</span><span class="p">]</span><span class="o">.</span><span class="n">set_variance</span><span class="p">(</span>
+            <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">,</span> <span class="n">variance_first</span><span class="p">,</span> <span class="n">variance_second</span><span class="p">)</span>
+        <span class="n">sim</span><span class="p">[</span><span class="n">SIM_VALUE_KEY</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="k">return</span> <span class="n">sim</span>
+
+    <span class="k">def</span> <span class="nf">_calculate_similarities_with_terms</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
+        <span class="n">cov</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">covariance_between</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">)</span> <span class="o">+</span> <span class="n">e</span>
+        <span class="n">variance_first</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variance</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span>
+        <span class="n">variance_second</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variance</span><span class="p">(</span><span class="n">another_user_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">)</span> <span class="o">+</span> <span class="n">g</span>
+        <span class="k">if</span> <span class="n">variance_first</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">variance_first</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">variance_second</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">variance_second</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">corr</span> <span class="o">=</span> <span class="n">pearson_correlation</span><span class="p">(</span><span class="n">cov</span><span class="p">,</span> <span class="n">variance_first</span><span class="p">,</span> <span class="n">variance_second</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_similarities</span><span class="p">(</span>
+            <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span>
+            <span class="n">variance_first</span><span class="p">,</span> <span class="n">variance_second</span><span class="p">,</span> <span class="n">corr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ret</span>
+
+    <span class="c1"># arguments as ((user_id, item_id, new_rating, new_avg_rating ),</span>
+    <span class="c1">#                       another_user_id)</span>
+    <span class="k">def</span> <span class="nf">_new_rating_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">):</span>
+        <span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">_current_item_id</span><span class="p">,</span> <span class="n">new_rating</span><span class="p">,</span> <span class="n">new_avg_rating</span><span class="p">,</span>
+         <span class="n">another_user_avg_rating</span><span class="p">,</span> <span class="n">another_user_ratings</span><span class="p">,</span> <span class="n">co_rated</span><span class="p">,</span>
+         <span class="n">old_avg_rating</span><span class="p">,</span> <span class="n">difference_avg</span><span class="p">,</span> <span class="n">co_rated_length</span><span class="p">,</span>
+         <span class="n">another_user_rating</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unpack_values</span><span class="p">(</span><span class="n">rating</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">)</span>
+        <span class="c1"># had rated</span>
+        <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">another_user_rating</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_rating</span> <span class="o">-</span> <span class="n">new_avg_rating</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span>
+                <span class="n">another_user_rating</span> <span class="o">-</span> <span class="n">another_user_avg_rating</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span>
+                    <span class="p">[</span><span class="n">difference_avg</span> <span class="o">*</span> <span class="p">(</span>
+                        <span class="n">another_user_ratings</span><span class="p">[</span><span class="n">item_id</span><span class="p">]</span> <span class="o">-</span> <span class="n">another_user_avg_rating</span>
+                    <span class="p">)</span> <span class="k">for</span> <span class="n">item_id</span> <span class="ow">in</span> <span class="n">co_rated</span><span class="p">])</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_rating</span> <span class="o">-</span> <span class="n">new_avg_rating</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">co_rated_length</span> <span class="o">*</span> <span class="p">(</span>
+                <span class="n">difference_avg</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">([</span><span class="n">difference_avg</span> <span class="o">*</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span> <span class="o">-</span> <span class="n">old_avg_rating</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">item_id</span> <span class="ow">in</span> <span class="n">co_rated</span><span class="p">])</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">another_user_rating</span> <span class="o">-</span> <span class="n">another_user_avg_rating</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+        <span class="c1"># had not rated</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span>
+                <span class="p">[(</span><span class="n">difference_avg</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span>
+                    <span class="n">another_user_ratings</span><span class="p">[</span><span class="n">item_id</span><span class="p">]</span> <span class="o">-</span> <span class="n">another_user_avg_rating</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">item_id</span> <span class="ow">in</span> <span class="n">co_rated</span><span class="p">])</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">co_rated_length</span> <span class="o">*</span> <span class="p">(</span><span class="n">difference_avg</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">([</span>
+                <span class="n">difference_avg</span> <span class="o">*</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span> <span class="o">-</span> <span class="n">old_avg_rating</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">item_id</span> <span class="ow">in</span> <span class="n">co_rated</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span>
+
+    <span class="k">def</span> <span class="nf">_new_rating_avg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">old_avg_rating</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">avg_rating</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">co_rated_between</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">))</span>
+        <span class="n">new_avg_rating</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span> <span class="o">/</span> <span class="p">(</span><span class="n">q</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="n">old_avg_rating</span> <span class="o">*</span> <span class="n">q</span> <span class="o">/</span> <span class="p">(</span><span class="n">q</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">new_avg_rating</span>
+
+    <span class="c1"># new rating incoming as (user_id, item_id, rating)</span>
+    <span class="k">def</span> <span class="nf">_new_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">new_avg_rating</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_rating_avg</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="n">members</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">difference</span><span class="p">({</span><span class="n">user_id</span><span class="p">})</span>
+        <span class="k">for</span> <span class="n">another_user_id</span> <span class="ow">in</span> <span class="n">members</span><span class="p">:</span>
+            <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_rating_terms</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">new_avg_rating</span><span class="p">),</span> <span class="n">another_user_id</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">similarities</span><span class="p">[(</span>
+                <span class="n">user_id</span><span class="p">,</span>
+                <span class="n">another_user_id</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_similarities_with_terms</span><span class="p">(</span>
+                    <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">avg_ratings</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_avg_rating</span>
+
+    <span class="c1"># new rating incoming as (user_id, item_id, rating)</span>
+<div class="viewcode-block" id="UserBasedExplicitCF.new_rating"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.new_rating">[docs]</a>    <span class="k">def</span> <span class="nf">new_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating</span><span class="p">):</span>
+        <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">rating</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item_id</span><span class="p">)</span>
+        <span class="c1"># rating update</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_new_rating</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_co_rated</span><span class="p">(</span>
+            <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserBasedExplicitCF.predict"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">nbs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">neighborhood_of</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+            <span class="n">nbs_ratings</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">u_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span> <span class="k">for</span> <span class="n">u_id</span> <span class="ow">in</span> <span class="n">nbs</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">avg</span><span class="p">(</span><span class="n">nbs_ratings</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="UserBasedExplicitCF.recommend"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.recommend">[docs]</a>    <span class="k">def</span> <span class="nf">recommend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">n_rec</span><span class="p">):</span>
+        <span class="n">item_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">]))</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">]</span>
+        <span class="n">nbs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">neighborhood_of</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+        <span class="n">nbs_predictions</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">i</span><span class="p">:</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nbs</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">item_ids</span><span class="p">}</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">key</span><span class="p">:</span> <span class="n">avg</span><span class="p">(</span><span class="n">nbs_predictions</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">nbs_predictions</span><span class="p">}</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span>
+            <span class="n">item_ids</span><span class="p">,</span>
+            <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item_id</span><span class="p">:</span> <span class="n">predictions</span><span class="p">[</span><span class="n">item_id</span><span class="p">])[:</span><span class="o">-</span><span class="n">n_rec</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="UserBasedExplicitCF.similarity_between"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.similarity_between">[docs]</a>    <span class="k">def</span> <span class="nf">similarity_between</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">another_user</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">similarities</span><span class="p">[(</span><span class="n">user</span><span class="p">,</span> <span class="n">another_user</span><span class="p">)][</span><span class="n">SIM_VALUE_KEY</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="UserBasedExplicitCF.covariance_between"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.covariance_between">[docs]</a>    <span class="k">def</span> <span class="nf">covariance_between</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">another_user</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">similarities</span><span class="p">[(</span><span class="n">user</span><span class="p">,</span> <span class="n">another_user</span><span class="p">)][</span><span class="n">COVARIANCE_KEY</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="UserBasedExplicitCF.variance"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.variance">[docs]</a>    <span class="k">def</span> <span class="nf">variance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">another_user</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">similarities</span><span class="p">[(</span>
+            <span class="n">user</span><span class="p">,</span> <span class="n">another_user</span><span class="p">)][</span><span class="n">VARIANCES_KEY</span><span class="p">]</span><span class="o">.</span><span class="n">variance</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">another_user</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserBasedExplicitCF.avg_rating"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.explicit_feedback.user_based.user_based_cf.UserBasedExplicitCF.avg_rating">[docs]</a>    <span class="k">def</span> <span class="nf">avg_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">avg_ratings</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span></div></div>
+</pre></div>
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        <a class="uplink" href="../../../../../../index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Fernando Fernandes.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.0.
+    </div>
+  </body>
+</html>

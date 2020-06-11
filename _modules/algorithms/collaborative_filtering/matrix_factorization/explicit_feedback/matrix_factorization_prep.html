@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep &#8212; increc 0.0.13 documentation</title>
+    <link rel="stylesheet" href="../../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../../../../index.html">
+          <span>increc 0.0.13 documentation</span></a></h1>
+        <h2 class="heading"><span>algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        <a class="uplink" href="../../../../../index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <h1>Source code for algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">algorithms.collaborative_filtering.matrix_factorization</span> <span class="kn">import</span> <span class="n">SGD</span>
+<span class="kn">from</span> <span class="nn">.preprocess_matrix</span> <span class="kn">import</span> <span class="n">PreprocessMatrix</span>
+
+
+<div class="viewcode-block" id="MFExplicitPrepSGD"><a class="viewcode-back" href="../../../../../algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep.MFExplicitPrepSGD">[docs]</a><span class="k">class</span> <span class="nc">MFExplicitPrepSGD</span><span class="p">(</span><span class="n">PreprocessMatrix</span><span class="p">,</span> <span class="n">SGD</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">u</span><span class="o">=</span><span class="p">[],</span> <span class="n">v</span><span class="o">=</span><span class="p">[],</span> <span class="n">user_avg</span><span class="o">=</span><span class="p">[],</span>
+            <span class="n">item_avg</span><span class="o">=</span><span class="p">[],</span> <span class="n">lf</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">prep</span><span class="o">=</span><span class="p">[],</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">lf</span><span class="p">,</span> <span class="n">user_avg</span><span class="p">,</span> <span class="n">item_avg</span><span class="p">,</span> <span class="n">prep</span><span class="p">)</span>
+        <span class="n">SGD</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">reg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initial_training</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_initial_training</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">ratings</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ratings</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">raw_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocessed_matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span>
+                    <span class="n">error</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_prep</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_update_factors</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MFExplicitPrepSGD.new_rating"><a class="viewcode-back" href="../../../../../algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep.MFExplicitPrepSGD.new_rating">[docs]</a>    <span class="k">def</span> <span class="nf">new_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating</span><span class="p">):</span>
+        <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">rating</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inc_avg</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="n">raw_value</span> <span class="o">=</span> <span class="n">value</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_avg</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">item_avg</span><span class="p">[</span>
+            <span class="n">item_id</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">preprocessed_matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">raw_value</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_prep</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_factors</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MFExplicitPrepSGD.recommend"><a class="viewcode-back" href="../../../../../algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep.MFExplicitPrepSGD.recommend">[docs]</a>    <span class="k">def</span> <span class="nf">recommend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">n_rec</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">repeated</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">n_rec</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">item_id</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+            <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">),</span> <span class="n">repeated</span><span class="p">)</span></div></div>
+</pre></div>
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        <a class="uplink" href="../../../../../index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Fernando Fernandes.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.0.
+    </div>
+  </body>
+</html>

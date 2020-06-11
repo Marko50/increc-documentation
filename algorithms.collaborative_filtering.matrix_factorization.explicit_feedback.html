@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>algorithms.collaborative_filtering.matrix_factorization.explicit_feedback package &#8212; increc 0.0.13 documentation</title>
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>increc 0.0.13 documentation</span></a></h1>
+        <h2 class="heading"><span>algorithms.collaborative_filtering.matrix_factorization.explicit_feedback package</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <div class="section" id="algorithms-collaborative-filtering-matrix-factorization-explicit-feedback-package">
+<h1>algorithms.collaborative_filtering.matrix_factorization.explicit_feedback package<a class="headerlink" href="#algorithms-collaborative-filtering-matrix-factorization-explicit-feedback-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization">
+<span id="algorithms-collaborative-filtering-matrix-factorization-explicit-feedback-matrix-factorization-module"></span><h2>algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization module<a class="headerlink" href="#module-algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization.MFExplicitSGD">
+<em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization.</code><code class="sig-name descname">MFExplicitSGD</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">u</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">v</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">lf</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">lr</span><span class="o">=</span><span class="default_value">0.01</span></em>, <em class="sig-param"><span class="n">reg</span><span class="o">=</span><span class="default_value">0.1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/matrix_factorization.html#MFExplicitSGD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization.MFExplicitSGD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.html#algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization" title="algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization</span></code></a>, <a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.html#algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD" title="algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD</span></code></a></p>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization.MFExplicitSGD.new_rating">
+<code class="sig-name descname">new_rating</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rating</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/matrix_factorization.html#MFExplicitSGD.new_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization.MFExplicitSGD.new_rating" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization.MFExplicitSGD.recommend">
+<code class="sig-name descname">recommend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">n_rec</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">repeated</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/matrix_factorization.html#MFExplicitSGD.recommend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization.MFExplicitSGD.recommend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep">
+<span id="algorithms-collaborative-filtering-matrix-factorization-explicit-feedback-matrix-factorization-prep-module"></span><h2>algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep module<a class="headerlink" href="#module-algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep.MFExplicitPrepSGD">
+<em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep.</code><code class="sig-name descname">MFExplicitPrepSGD</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">u</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">v</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">user_avg</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">item_avg</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">lf</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">prep</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">lr</span><span class="o">=</span><span class="default_value">0.01</span></em>, <em class="sig-param"><span class="n">reg</span><span class="o">=</span><span class="default_value">0.1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/matrix_factorization_prep.html#MFExplicitPrepSGD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep.MFExplicitPrepSGD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix.PreprocessMatrix" title="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix.PreprocessMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix.PreprocessMatrix</span></code></a>, <a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.html#algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD" title="algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD</span></code></a></p>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep.MFExplicitPrepSGD.new_rating">
+<code class="sig-name descname">new_rating</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rating</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/matrix_factorization_prep.html#MFExplicitPrepSGD.new_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep.MFExplicitPrepSGD.new_rating" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep.MFExplicitPrepSGD.recommend">
+<code class="sig-name descname">recommend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">n_rec</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">repeated</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/matrix_factorization_prep.html#MFExplicitPrepSGD.recommend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep.MFExplicitPrepSGD.recommend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix">
+<span id="algorithms-collaborative-filtering-matrix-factorization-explicit-feedback-preprocess-matrix-module"></span><h2>algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix module<a class="headerlink" href="#module-algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix.PreprocessMatrix">
+<em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix.</code><code class="sig-name descname">PreprocessMatrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">u</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">v</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">lf</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">user_avg</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">item_avg</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">prep</span><span class="o">=</span><span class="default_value">[]</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/preprocess_matrix.html#PreprocessMatrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix.PreprocessMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.html#algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization" title="algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization</span></code></a></p>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix.PreprocessMatrix.inc_avg">
+<code class="sig-name descname">inc_avg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user</span></em>, <em class="sig-param"><span class="n">item</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/preprocess_matrix.html#PreprocessMatrix.inc_avg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix.PreprocessMatrix.inc_avg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix.PreprocessMatrix.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">item_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/preprocess_matrix.html#PreprocessMatrix.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix.PreprocessMatrix.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix.PreprocessMatrix.predict_prep">
+<code class="sig-name descname">predict_prep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">item_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/preprocess_matrix.html#PreprocessMatrix.predict_prep"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix.PreprocessMatrix.predict_prep" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-algorithms.collaborative_filtering.matrix_factorization.explicit_feedback">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-algorithms.collaborative_filtering.matrix_factorization.explicit_feedback" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.MFExplicitPrepSGD">
+<em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.</code><code class="sig-name descname">MFExplicitPrepSGD</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">u</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">v</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">user_avg</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">item_avg</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">lf</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">prep</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">lr</span><span class="o">=</span><span class="default_value">0.01</span></em>, <em class="sig-param"><span class="n">reg</span><span class="o">=</span><span class="default_value">0.1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/matrix_factorization_prep.html#MFExplicitPrepSGD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.MFExplicitPrepSGD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix.PreprocessMatrix" title="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix.PreprocessMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix.PreprocessMatrix</span></code></a>, <a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.html#algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD" title="algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD</span></code></a></p>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.MFExplicitPrepSGD.new_rating">
+<code class="sig-name descname">new_rating</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rating</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/matrix_factorization_prep.html#MFExplicitPrepSGD.new_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.MFExplicitPrepSGD.new_rating" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.MFExplicitPrepSGD.recommend">
+<code class="sig-name descname">recommend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">n_rec</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">repeated</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/matrix_factorization_prep.html#MFExplicitPrepSGD.recommend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.MFExplicitPrepSGD.recommend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.MFExplicitSGD">
+<em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.</code><code class="sig-name descname">MFExplicitSGD</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">u</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">v</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">lf</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">lr</span><span class="o">=</span><span class="default_value">0.01</span></em>, <em class="sig-param"><span class="n">reg</span><span class="o">=</span><span class="default_value">0.1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/matrix_factorization.html#MFExplicitSGD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.MFExplicitSGD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.html#algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization" title="algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization</span></code></a>, <a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.html#algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD" title="algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD</span></code></a></p>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.MFExplicitSGD.new_rating">
+<code class="sig-name descname">new_rating</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rating</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/matrix_factorization.html#MFExplicitSGD.new_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.MFExplicitSGD.new_rating" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.MFExplicitSGD.recommend">
+<code class="sig-name descname">recommend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">n_rec</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">repeated</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/explicit_feedback/matrix_factorization.html#MFExplicitSGD.recommend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.MFExplicitSGD.recommend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Fernando Fernandes.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.0.
+    </div>
+  </body>
+</html>
