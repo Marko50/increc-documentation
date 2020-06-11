@@ -1,7 +1,7 @@
-FEUP-DISS
-=========
+data_structures
+===============
 
 .. toctree::
    :maxdepth: 4
 
-   FEUP-DISS
+   data_structures
