@@ -58,7 +58,7 @@
 <span class="sd">        on calculating and incrementing similarities.</span>
 <span class="sd">        Extends CollaborativeFiltering.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<div class="viewcode-block" id="ItemBasedImplicitCF.__init__"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">intersections</span><span class="o">=</span><span class="p">[],</span> <span class="n">l1</span><span class="o">=</span><span class="p">[],</span> <span class="n">inv_index</span><span class="o">=</span><span class="p">{},</span>
             <span class="n">similarities</span><span class="o">=</span><span class="p">[]):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -85,9 +85,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">l1_norms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_model</span><span class="p">(</span>
             <span class="n">l1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_l1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">similarities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_model</span><span class="p">(</span>
-            <span class="n">similarities</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_similarities</span><span class="p">)</span>
+            <span class="n">similarities</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_similarities</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_init_similarities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ItemBasedImplicitCF._init_similarities"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._init_similarities">[docs]</a>    <span class="k">def</span> <span class="nf">_init_similarities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            A function which computes and returns a</span>
@@ -99,9 +99,9 @@
             <span class="k">for</span> <span class="n">another_item</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">item</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
                 <span class="n">sims</span><span class="p">[(</span><span class="n">item</span><span class="p">,</span> <span class="n">another_item</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_similarity</span><span class="p">(</span>
                     <span class="n">item</span><span class="p">,</span> <span class="n">another_item</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">sims</span>
+        <span class="k">return</span> <span class="n">sims</span></div>
 
-    <span class="k">def</span> <span class="nf">_init_similarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">another_item</span><span class="p">):</span>
+<div class="viewcode-block" id="ItemBasedImplicitCF._init_similarity"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._init_similarity">[docs]</a>    <span class="k">def</span> <span class="nf">_init_similarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">another_item</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            A function which computes and returns a similarity</span>
@@ -117,9 +117,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">intersections_between</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">another_item</span><span class="p">),</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">l1_norm_of</span><span class="p">(</span><span class="n">item</span><span class="p">),</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">l1_norm_of</span><span class="p">(</span><span class="n">another_item</span><span class="p">)</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_init_intersections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ItemBasedImplicitCF._init_intersections"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._init_intersections">[docs]</a>    <span class="k">def</span> <span class="nf">_init_intersections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            The function which computes and returns a</span>
@@ -131,9 +131,9 @@
                 <span class="n">others</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">item</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">another_item</span> <span class="ow">in</span> <span class="n">others</span><span class="p">:</span>
                     <span class="n">intersections</span><span class="p">[(</span><span class="n">item</span><span class="p">,</span> <span class="n">another_item</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="n">intersections</span>
+        <span class="k">return</span> <span class="n">intersections</span></div>
 
-    <span class="k">def</span> <span class="nf">_init_l1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ItemBasedImplicitCF._init_l1"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._init_l1">[docs]</a>    <span class="k">def</span> <span class="nf">_init_l1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            The function which computes and returns a</span>
@@ -144,9 +144,9 @@
         <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inv_index</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
                 <span class="n">l1_norms</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="n">l1_norms</span>
+        <span class="k">return</span> <span class="n">l1_norms</span></div>
 
-    <span class="k">def</span> <span class="nf">_init_inv_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ItemBasedImplicitCF._init_inv_index"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._init_inv_index">[docs]</a>    <span class="k">def</span> <span class="nf">_init_inv_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            The function which computes and returns a</span>
@@ -158,9 +158,9 @@
             <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user</span><span class="p">][</span><span class="n">item</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">inv_index</span><span class="p">[</span><span class="n">user</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">inv_index</span>
+        <span class="k">return</span> <span class="n">inv_index</span></div>
 
-    <span class="k">def</span> <span class="nf">_update_intersections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">):</span>
+<div class="viewcode-block" id="ItemBasedImplicitCF._update_intersections"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._update_intersections">[docs]</a>    <span class="k">def</span> <span class="nf">_update_intersections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            A function which updates the intersection matrix.</span>
@@ -172,9 +172,9 @@
 <span class="sd">            :type item_id: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">another_item_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inv_index_of</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">intersections</span><span class="p">[(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">another_item_id</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">intersections</span><span class="p">[(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">another_item_id</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span></div>
 
-    <span class="k">def</span> <span class="nf">_update_similarities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_id</span><span class="p">):</span>
+<div class="viewcode-block" id="ItemBasedImplicitCF._update_similarities"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._update_similarities">[docs]</a>    <span class="k">def</span> <span class="nf">_update_similarities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            A function which updates the similarity matrix.</span>
@@ -186,7 +186,7 @@
         <span class="k">for</span> <span class="n">another_item_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">similarities</span><span class="p">[(</span>
                 <span class="n">item_id</span><span class="p">,</span> <span class="n">another_item_id</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_similarity</span><span class="p">(</span>
-                    <span class="n">item_id</span><span class="p">,</span> <span class="n">another_item_id</span><span class="p">)</span>
+                    <span class="n">item_id</span><span class="p">,</span> <span class="n">another_item_id</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ItemBasedImplicitCF.new_rating"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF.new_rating">[docs]</a>    <span class="k">def</span> <span class="nf">new_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

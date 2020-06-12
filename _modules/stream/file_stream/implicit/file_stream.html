@@ -48,13 +48,37 @@
 
 
 <div class="viewcode-block" id="FileStreamImplicit"><a class="viewcode-back" href="../../../../stream.file_stream.implicit.html#stream.file_stream.implicit.file_stream.FileStreamImplicit">[docs]</a><span class="k">class</span> <span class="nc">FileStreamImplicit</span><span class="p">(</span><span class="n">FileStream</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A class which creates a data</span>
+<span class="sd">        stream with implicit ratings out of a file dataset.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="FileStreamImplicit.__init__"><a class="viewcode-back" href="../../../../stream.file_stream.implicit.html#stream.file_stream.implicit.file_stream.FileStreamImplicit.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            FileStreamImplicit&#39;s constructor.</span>
 
-    <span class="k">def</span> <span class="nf">_parse_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating_arr</span><span class="p">):</span>
+<span class="sd">        Arguments</span>
+<span class="sd">            :param path: The path to the file.</span>
+<span class="sd">            :type path: string</span>
+<span class="sd">            :param sep: A character which separates the field in each line.</span>
+<span class="sd">            :type sep: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FileStreamImplicit._parse_rating"><a class="viewcode-back" href="../../../../stream.file_stream.implicit.html#stream.file_stream.implicit.file_stream.FileStreamImplicit._parse_rating">[docs]</a>    <span class="k">def</span> <span class="nf">_parse_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating_arr</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which returns a parsed implicit</span>
+<span class="sd">            rating.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param rating_arr: A tuple of the form (user, item).</span>
+<span class="sd">            :type rating_arr: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">user_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rating_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">item_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rating_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">)</span></div></div>
 </pre></div>
 
             <div class="clearer"></div>

@@ -49,15 +49,35 @@
 
 
 <div class="viewcode-block" id="EvaluationStatic"><a class="viewcode-back" href="../../graphic.html#graphic.static.EvaluationStatic">[docs]</a><span class="k">class</span> <span class="nc">EvaluationStatic</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">evaluator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A class which displays a graphic which portrays the evolution</span>
+<span class="sd">        of processing and recommendation time as well as accuracy</span>
+<span class="sd">        of an algorithm when a dataset is processed incrementally.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="EvaluationStatic.__init__"><a class="viewcode-back" href="../../graphic.html#graphic.static.EvaluationStatic.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">evaluator</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            EvaluationStatic&#39;s constructor.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param stream: A stream of ratings.</span>
+<span class="sd">            :type stream: list</span>
+<span class="sd">            :param evaluator: A evaluator object.</span>
+<span class="sd">            :type evaluator: PrequentialEvaluator</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">evaluator</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stream</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">err_rate</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">elap_nr</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">elap_rec</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elap_rec</span> <span class="o">=</span> <span class="p">[]</span></div>
 
 <div class="viewcode-block" id="EvaluationStatic.evaluate"><a class="viewcode-back" href="../../graphic.html#graphic.static.EvaluationStatic.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which evaluates the data stream.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">bar</span> <span class="o">=</span> <span class="n">Bar</span><span class="p">(</span><span class="s1">&#39;Evaluating&#39;</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">:</span>
             <span class="n">err</span><span class="p">,</span> <span class="n">elap_rec</span><span class="p">,</span> <span class="n">elap_nr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluator</span><span class="o">.</span><span class="n">new_rating</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
@@ -68,6 +88,10 @@
         <span class="n">bar</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="EvaluationStatic.plot"><a class="viewcode-back" href="../../graphic.html#graphic.static.EvaluationStatic.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which plots the 3 subplots.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
         <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Metrics&#39;</span><span class="p">)</span>
         <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">err_rate</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Average error.&quot;</span><span class="p">)</span>
@@ -77,13 +101,32 @@
         <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">elap_rec</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Recommendation time.&quot;</span><span class="p">)</span>
         <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="EvaluationStatic.show"><a class="viewcode-back" href="../../graphic.html#graphic.static.EvaluationStatic.show">[docs]</a>    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+<div class="viewcode-block" id="EvaluationStatic.export"><a class="viewcode-back" href="../../graphic.html#graphic.static.EvaluationStatic.export">[docs]</a>    <span class="k">def</span> <span class="nf">export</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which exports the plots to an image format. Displays</span>
+<span class="sd">            it if show=True.</span>
 
-<div class="viewcode-block" id="EvaluationStatic.process"><a class="viewcode-back" href="../../graphic.html#graphic.static.EvaluationStatic.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="sd">        Arguments</span>
+<span class="sd">            :param show: Does it show the image or not.</span>
+<span class="sd">            :type show: boolean</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;output.png&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EvaluationStatic.process"><a class="viewcode-back" href="../../graphic.html#graphic.static.EvaluationStatic.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which processes a data stream and creates a graph.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param show: Does it show the image or not.</span>
+<span class="sd">            :type show: boolean</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">show</span><span class="p">)</span></div></div>
 </pre></div>
 
             <div class="clearer"></div>

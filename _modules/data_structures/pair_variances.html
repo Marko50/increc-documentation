@@ -45,16 +45,51 @@
             
   <h1>Source code for data_structures.pair_variances</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="PairVariances"><a class="viewcode-back" href="../../data_structures.html#data_structures.pair_variances.PairVariances">[docs]</a><span></span><span class="k">class</span> <span class="nc">PairVariances</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A class which implements a useful data structure</span>
+<span class="sd">        which stores variance pairs for the user-based neighboorhod</span>
+<span class="sd">        explicit algorithm.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="PairVariances.__init__"><a class="viewcode-back" href="../../data_structures.html#data_structures.pair_variances.PairVariances.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            PairVariances&#39;s constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">first_variance</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">second_variance</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">second_variance</span> <span class="o">=</span> <span class="mi">0</span></div>
 
 <div class="viewcode-block" id="PairVariances.set_variance"><a class="viewcode-back" href="../../data_structures.html#data_structures.pair_variances.PairVariances.set_variance">[docs]</a>    <span class="k">def</span> <span class="nf">set_variance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">f_var</span><span class="p">,</span> <span class="n">s_var</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which sets the variances of the pair of elements.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param first: The first element.</span>
+<span class="sd">            :type first: int</span>
+<span class="sd">            :param second: The second element.</span>
+<span class="sd">            :type second: int</span>
+<span class="sd">            :param f_var: The first element&#39;s variance.</span>
+<span class="sd">            :type f_var: int</span>
+<span class="sd">            :param s_var: The second element&#39;s variance.</span>
+<span class="sd">            :type s_var: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">first</span> <span class="o">&lt;</span> <span class="n">second</span><span class="p">:</span>
             <span class="n">f_var</span><span class="p">,</span> <span class="n">s_var</span> <span class="o">=</span> <span class="n">s_var</span><span class="p">,</span> <span class="n">f_var</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">first_variance</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">second_variance</span> <span class="o">=</span> <span class="n">f_var</span><span class="p">,</span> <span class="n">s_var</span></div>
 
 <div class="viewcode-block" id="PairVariances.variance"><a class="viewcode-back" href="../../data_structures.html#data_structures.pair_variances.PairVariances.variance">[docs]</a>    <span class="k">def</span> <span class="nf">variance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which returns the variance given a specific</span>
+<span class="sd">            pair.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">         :param first: The first element.</span>
+<span class="sd">         :type first: int</span>
+<span class="sd">         :param second: The second element.</span>
+<span class="sd">         :type second: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">first</span> <span class="o">&gt;</span> <span class="n">second</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">first_variance</span>
         <span class="k">else</span><span class="p">:</span>

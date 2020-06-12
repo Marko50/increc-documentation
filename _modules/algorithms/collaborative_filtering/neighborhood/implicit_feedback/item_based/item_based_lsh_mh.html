@@ -55,7 +55,7 @@
 <span class="sd">        A class which implements the item-based locality-sensitive min hashing</span>
 <span class="sd">        algorithm which extends LSHMinHash.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">signature_matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">buckets</span><span class="o">=</span><span class="p">[],</span> <span class="n">n_perms</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+<div class="viewcode-block" id="ItemLSHMinHash.__init__"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.ItemLSHMinHash.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">signature_matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">buckets</span><span class="o">=</span><span class="p">[],</span> <span class="n">n_perms</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
                  <span class="n">n_bands</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
@@ -74,9 +74,9 @@
 <span class="sd">            :param n_bands: Number of bands which are used for bucketing.</span>
 <span class="sd">            :type n_bands: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">signature_matrix</span><span class="p">,</span> <span class="n">buckets</span><span class="p">,</span> <span class="n">n_perms</span><span class="p">,</span> <span class="n">n_bands</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">signature_matrix</span><span class="p">,</span> <span class="n">buckets</span><span class="p">,</span> <span class="n">n_perms</span><span class="p">,</span> <span class="n">n_bands</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_permutation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
+<div class="viewcode-block" id="ItemLSHMinHash._permutation"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.ItemLSHMinHash._permutation">[docs]</a>    <span class="k">def</span> <span class="nf">_permutation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            A function which defines how to permutate a matrix.</span>
@@ -85,15 +85,15 @@
 <span class="sd">            :param matrix: The matrix to be permutated.</span>
 <span class="sd">            :type matrix: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">permutation</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">permutation</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ItemLSHMinHash._elements"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.ItemLSHMinHash._elements">[docs]</a>    <span class="k">def</span> <span class="nf">_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            A function which defines the elements to be</span>
 <span class="sd">            hashed.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span></div>
 
 <div class="viewcode-block" id="ItemLSHMinHash.get_vector"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.ItemLSHMinHash.get_vector">[docs]</a>    <span class="k">def</span> <span class="nf">get_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

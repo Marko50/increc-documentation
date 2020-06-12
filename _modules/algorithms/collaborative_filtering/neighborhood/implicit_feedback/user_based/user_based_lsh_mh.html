@@ -51,26 +51,93 @@
 
 
 <div class="viewcode-block" id="UserLSHMinHash"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_lsh_mh.UserLSHMinHash">[docs]</a><span class="k">class</span> <span class="nc">UserLSHMinHash</span><span class="p">(</span><span class="n">LSHMinHash</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">signature_matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">buckets</span><span class="o">=</span><span class="p">[],</span> <span class="n">n_perms</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A class which implements the user-based locality-sensitive min hashing</span>
+<span class="sd">        algorithm which extends LSHMinHash.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="UserLSHMinHash.__init__"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_lsh_mh.UserLSHMinHash.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">signature_matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">buckets</span><span class="o">=</span><span class="p">[],</span> <span class="n">n_perms</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
                  <span class="n">n_bands</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">signature_matrix</span><span class="p">,</span> <span class="n">buckets</span><span class="p">,</span> <span class="n">n_perms</span><span class="p">,</span> <span class="n">n_bands</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            UserLSHMinHash&#39;s constructor.</span>
 
-    <span class="k">def</span> <span class="nf">_permutation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">permutation</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">element</span><span class="p">]</span>
+<span class="sd">        Arguments</span>
+<span class="sd">            :param matrix: A ratings matrix.</span>
+<span class="sd">            :type matrix: list</span>
+<span class="sd">            :param signature_matrix: The signature matrix which contains</span>
+<span class="sd">                elements&#39; signatures in the columns.</span>
+<span class="sd">            :type signature_matrix: DynamicArray</span>
+<span class="sd">            :param buckets: The buckets where elements are hashed into.</span>
+<span class="sd">            :type buckets: defaultdict(set)</span>
+<span class="sd">            :param n_perms: Number of permutations for hashing.</span>
+<span class="sd">            :type n_perms: int</span>
+<span class="sd">            :param n_bands: Number of bands which are used for bucketing.</span>
+<span class="sd">            :type n_bands: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">signature_matrix</span><span class="p">,</span> <span class="n">buckets</span><span class="p">,</span> <span class="n">n_perms</span><span class="p">,</span> <span class="n">n_bands</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">users</span>
+<div class="viewcode-block" id="UserLSHMinHash._permutation"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_lsh_mh.UserLSHMinHash._permutation">[docs]</a>    <span class="k">def</span> <span class="nf">_permutation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which defines how to permutate a matrix.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param matrix: The matrix to be permutated.</span>
+<span class="sd">            :type matrix: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">permutation</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">element</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="UserLSHMinHash._elements"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_lsh_mh.UserLSHMinHash._elements">[docs]</a>    <span class="k">def</span> <span class="nf">_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which defines the elements to be</span>
+<span class="sd">            hashed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">users</span></div>
 
 <div class="viewcode-block" id="UserLSHMinHash.get_vector"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_lsh_mh.UserLSHMinHash.get_vector">[docs]</a>    <span class="k">def</span> <span class="nf">get_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which returns a position of a matrix.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param matrix: The matrix to be accessed.</span>
+<span class="sd">            :type matrix: list</span>
+<span class="sd">            :param pos: The index/position.</span>
+<span class="sd">            :type pos: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">element</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="UserLSHMinHash.new_rating"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_lsh_mh.UserLSHMinHash.new_rating">[docs]</a>    <span class="k">def</span> <span class="nf">new_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            The function which processes a new iteration. Expects a tuple</span>
+<span class="sd">            (user, item)</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param rating: The rating tuple.</span>
+<span class="sd">            :type rating: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">new_rating</span><span class="p">(</span><span class="n">rating</span><span class="p">)</span>
         <span class="n">user_id</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">rating</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_signature_matrix</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_buckets</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="UserLSHMinHash.recommend"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_lsh_mh.UserLSHMinHash.recommend">[docs]</a>    <span class="k">def</span> <span class="nf">recommend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">n_rec</span><span class="p">,</span> <span class="n">repeated</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which returns recommendations for a user.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param user_id: The user identifier.</span>
+<span class="sd">            :type user_id: int</span>
+<span class="sd">            :param n_rec: The number of items to recommend.</span>
+<span class="sd">            :type n_rec: int</span>
+<span class="sd">            :param repeated: Variable which defines if already rated products\</span>
+<span class="sd">                can be recommended.</span>
+<span class="sd">            :type repeated: boolean</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span>
         <span class="n">row_filtered</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">item_id</span> <span class="k">for</span> <span class="n">item_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">item_id</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>

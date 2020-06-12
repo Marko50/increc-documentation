@@ -48,31 +48,79 @@
 
 
 <div class="viewcode-block" id="SymmetricMatrix"><a class="viewcode-back" href="../../data_structures.html#data_structures.symmetric_matrix.SymmetricMatrix">[docs]</a><span class="k">class</span> <span class="nc">SymmetricMatrix</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A class which implements a matrix object with</span>
+<span class="sd">        symmetry characteristics.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="SymmetricMatrix.__init__"><a class="viewcode-back" href="../../data_structures.html#data_structures.symmetric_matrix.SymmetricMatrix.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            SymmetricMatrix&#39;s constructor.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param size: The initial size.</span>
+<span class="sd">            :type size: list</span>
+<span class="sd">            :param default_value: A function which returns a default\</span>
+<span class="sd">                value when extending the metadata for uninitialized\</span>
+<span class="sd">                    positions.</span>
+<span class="sd">            :type default_value: function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">size</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;size cannot be negative&#39;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">DynamicArray</span><span class="p">(</span>
             <span class="p">[</span><span class="n">value</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">((</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">size</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)],</span>
-            <span class="n">value</span><span class="p">)</span>
+            <span class="n">value</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="SymmetricMatrix.__setitem__"><a class="viewcode-back" href="../../data_structures.html#data_structures.symmetric_matrix.SymmetricMatrix.__setitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description.</span>
+<span class="sd">            Overriding the __setitem__ function.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param position: The index to access.</span>
+<span class="sd">            :type position: tuple</span>
+<span class="sd">            :param value: The value to set.</span>
+<span class="sd">            :type value: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_index</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span></div>
 
-    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+<div class="viewcode-block" id="SymmetricMatrix.__getitem__"><a class="viewcode-back" href="../../data_structures.html#data_structures.symmetric_matrix.SymmetricMatrix.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description.</span>
+<span class="sd">            Overriding the __getitem__ function.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param position: The index to access.</span>
+<span class="sd">            :type position: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_index</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">index</span><span class="p">]</span></div>
 
-    <span class="k">def</span> <span class="nf">_get_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+<div class="viewcode-block" id="SymmetricMatrix._get_index"><a class="viewcode-back" href="../../data_structures.html#data_structures.symmetric_matrix.SymmetricMatrix._get_index">[docs]</a>    <span class="k">def</span> <span class="nf">_get_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which computes the resulting index</span>
+<span class="sd">            out of a provided (row, column) tuple.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param position: A tuple of the form (row, column).</span>
+<span class="sd">            :type position: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">row</span><span class="p">,</span> <span class="n">column</span> <span class="o">=</span> <span class="n">position</span>
         <span class="k">if</span> <span class="n">column</span> <span class="o">&gt;</span> <span class="n">row</span><span class="p">:</span>
             <span class="n">row</span><span class="p">,</span> <span class="n">column</span> <span class="o">=</span> <span class="n">column</span><span class="p">,</span> <span class="n">row</span>
         <span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span> <span class="o">+</span> <span class="n">row</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">column</span>
-        <span class="k">return</span> <span class="n">index</span>
+        <span class="k">return</span> <span class="n">index</span></div>
 
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span></div>
+<div class="viewcode-block" id="SymmetricMatrix.__iter__"><a class="viewcode-back" href="../../data_structures.html#data_structures.symmetric_matrix.SymmetricMatrix.__iter__">[docs]</a>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description.</span>
+<span class="sd">            Overriding the __iter__ function.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span></div></div>
 </pre></div>
 
             <div class="clearer"></div>

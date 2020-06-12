@@ -49,13 +49,39 @@
 
 
 <div class="viewcode-block" id="UserBasedImplicitCF"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_cf.UserBasedImplicitCF">[docs]</a><span class="k">class</span> <span class="nc">UserBasedImplicitCF</span><span class="p">(</span><span class="n">UserBasedCF</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">similarities</span><span class="o">=</span><span class="p">[],</span> <span class="n">co_rated</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A class which deals with similarity computation between pairs of users</span>
+<span class="sd">        for implicit feedback. Extends UserBasedCF.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="UserBasedImplicitCF.__init__"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_cf.UserBasedImplicitCF.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">similarities</span><span class="o">=</span><span class="p">[],</span> <span class="n">co_rated</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            UserBasedImplicitCF&#39;s constructor.</span>
+<span class="sd">        Arguments</span>
+<span class="sd">            :param matrix: The ratings matrix.</span>
+<span class="sd">            :type matrix: list</span>
+<span class="sd">            :param similarities: The user similarity matrix.</span>
+<span class="sd">            :type similarities: SymmetricMatrix</span>
+<span class="sd">            :param co_rated: Co-rated items matrix.</span>
+<span class="sd">            :type co_rated: SymmetricMatrix</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">co_rated</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">similarity_default</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">similarities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_model</span><span class="p">(</span>
-            <span class="n">similarities</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_similarities</span><span class="p">)</span>
+            <span class="n">similarities</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_similarities</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_init_similarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">):</span>
+<div class="viewcode-block" id="UserBasedImplicitCF._init_similarity"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_cf.UserBasedImplicitCF._init_similarity">[docs]</a>    <span class="k">def</span> <span class="nf">_init_similarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which computes and returns the similarity</span>
+<span class="sd">            between two users.</span>
+<span class="sd">        Arguments</span>
+<span class="sd">            :param user_id: The first user.</span>
+<span class="sd">            :type user_id: int</span>
+<span class="sd">            :param another_user_id: The second user.</span>
+<span class="sd">            :type another_user_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">number_rated_items_user</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">co_rated_between</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">))</span>
         <span class="n">number_rated_items_another_user</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">co_rated_between</span><span class="p">(</span>
             <span class="n">another_user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">))</span>
@@ -63,16 +89,33 @@
                                                              <span class="n">another_user_id</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">cos_sim</span><span class="p">(</span>
             <span class="n">number_of_co_rated_items</span><span class="p">,</span> <span class="n">number_rated_items_user</span><span class="p">,</span>
-            <span class="n">number_rated_items_another_user</span><span class="p">)</span>
+            <span class="n">number_rated_items_another_user</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_update_similarities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">):</span>
+<div class="viewcode-block" id="UserBasedImplicitCF._update_similarities"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_cf.UserBasedImplicitCF._update_similarities">[docs]</a>    <span class="k">def</span> <span class="nf">_update_similarities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which updates similarities for each pair of user</span>
+<span class="sd">            where user_id is included.</span>
+<span class="sd">        Arguments</span>
+<span class="sd">            :param user_id: A user identifier.</span>
+<span class="sd">            :type user_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">members</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">difference</span><span class="p">({</span><span class="n">user_id</span><span class="p">})</span>
         <span class="k">for</span> <span class="n">another_user_id</span> <span class="ow">in</span> <span class="n">members</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">similarities</span><span class="p">[(</span>
                 <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_similarity</span><span class="p">(</span>
-                    <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">)</span>
+                    <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="UserBasedImplicitCF.new_rating"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_cf.UserBasedImplicitCF.new_rating">[docs]</a>    <span class="k">def</span> <span class="nf">new_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            The function which processes a new iteration. Expects a tuple</span>
+<span class="sd">            (user, item)</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param rating: The rating tuple.</span>
+<span class="sd">            :type rating: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span> <span class="o">=</span> <span class="n">rating</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item_id</span><span class="p">)</span>
@@ -80,20 +123,40 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_co_rated</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_similarities</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="UserBasedImplicitCF.recommend"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_cf.UserBasedImplicitCF.recommend">[docs]</a>    <span class="k">def</span> <span class="nf">recommend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">n_products</span><span class="p">):</span>
+<div class="viewcode-block" id="UserBasedImplicitCF.recommend"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_cf.UserBasedImplicitCF.recommend">[docs]</a>    <span class="k">def</span> <span class="nf">recommend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">n_rec</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which returns recommendations for a user.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param user_id: The user identifier.</span>
+<span class="sd">            :type user_id: int</span>
+<span class="sd">            :param n_rec: The number of items to recommend.</span>
+<span class="sd">            :type n_rec: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">item_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span>
             <span class="n">user_id</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">]</span>
         <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">item_ids</span><span class="p">,</span>
                       <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item_id</span><span class="p">:</span>
-                      <span class="bp">self</span><span class="o">.</span><span class="n">_activation_weight</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">))[</span><span class="o">-</span><span class="n">n_products</span><span class="p">:]</span></div>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">_activation_weight</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">))[</span><span class="o">-</span><span class="n">n_rec</span><span class="p">:]</span></div>
 
-    <span class="k">def</span> <span class="nf">_activation_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">):</span>
+<div class="viewcode-block" id="UserBasedImplicitCF._activation_weight"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_cf.UserBasedImplicitCF._activation_weight">[docs]</a>    <span class="k">def</span> <span class="nf">_activation_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which calculates the activation weight</span>
+<span class="sd">            of an item for a user.</span>
+<span class="sd">        Arguments</span>
+<span class="sd">            :param user_id: A user identifier.</span>
+<span class="sd">            :type user_id: int</span>
+<span class="sd">            :param item_id: An item identifier.</span>
+<span class="sd">            :type item_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">nbs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">neighborhood_of</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
         <span class="n">len_nbs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nbs</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">similarity_between</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">)</span>
                     <span class="k">for</span> <span class="n">another_user_id</span> <span class="ow">in</span> <span class="n">nbs</span>
                     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">another_user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span>
-                    <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">])</span> <span class="o">/</span> <span class="n">len_nbs</span> <span class="k">if</span> <span class="n">len_nbs</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span></div>
+                    <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">])</span> <span class="o">/</span> <span class="n">len_nbs</span> <span class="k">if</span> <span class="n">len_nbs</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span></div></div>
 </pre></div>
 
             <div class="clearer"></div>

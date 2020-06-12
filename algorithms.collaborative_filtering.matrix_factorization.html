@@ -60,16 +60,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html">algorithms.collaborative_filtering.matrix_factorization.explicit_feedback package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html#module-algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization">algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html#module-algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep">algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html#module-algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix">algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html#module-algorithms.collaborative_filtering.matrix_factorization.explicit_feedback">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html#algorithms-collaborative-filtering-matrix-factorization-explicit-feedback-matrix-factorization-module">algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html#algorithms-collaborative-filtering-matrix-factorization-explicit-feedback-matrix-factorization-prep-module">algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.matrix_factorization_prep module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.html#algorithms-collaborative-filtering-matrix-factorization-explicit-feedback-preprocess-matrix-module">algorithms.collaborative_filtering.matrix_factorization.explicit_feedback.preprocess_matrix module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.implicit_feedback.html">algorithms.collaborative_filtering.matrix_factorization.implicit_feedback package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.implicit_feedback.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.implicit_feedback.html#module-algorithms.collaborative_filtering.matrix_factorization.implicit_feedback.matrix_factorization">algorithms.collaborative_filtering.matrix_factorization.implicit_feedback.matrix_factorization module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.implicit_feedback.html#module-algorithms.collaborative_filtering.matrix_factorization.implicit_feedback">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.collaborative_filtering.matrix_factorization.implicit_feedback.html#algorithms-collaborative-filtering-matrix-factorization-implicit-feedback-matrix-factorization-module">algorithms.collaborative_filtering.matrix_factorization.implicit_feedback.matrix_factorization module</a></li>
 </ul>
 </li>
 </ul>
@@ -78,17 +76,113 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-algorithms.collaborative_filtering.matrix_factorization.matrix_factorization">
-<span id="algorithms-collaborative-filtering-matrix-factorization-matrix-factorization-module"></span><h2>algorithms.collaborative_filtering.matrix_factorization.matrix_factorization module<a class="headerlink" href="#module-algorithms.collaborative_filtering.matrix_factorization.matrix_factorization" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="algorithms-collaborative-filtering-matrix-factorization-matrix-factorization-module">
+<h2>algorithms.collaborative_filtering.matrix_factorization.matrix_factorization module<a class="headerlink" href="#algorithms-collaborative-filtering-matrix-factorization-matrix-factorization-module" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization">
 <em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.</code><code class="sig-name descname">MatrixFactorization</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span></em>, <em class="sig-param"><span class="n">u</span></em>, <em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">lf</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="algorithms.collaborative_filtering.html#algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering" title="algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering</span></code></a></p>
-<dl class="simple">
+<dd><dl class="simple">
 <dt>Description</dt><dd><p>Matrix factorization general class which extends
 CollaborativeFiltering.</p>
 </dd>
 </dl>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span></em>, <em class="sig-param"><span class="n">u</span></em>, <em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">lf</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>MatrixFactorization’s constructor.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param matrix</dt>
+<dd class="field-odd"><p>The ratings matrix.</p>
+</dd>
+<dt class="field-even">type matrix</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param u</dt>
+<dd class="field-odd"><p>U matrix.</p>
+</dd>
+<dt class="field-even">type u</dt>
+<dd class="field-even"><p>DynamicArray</p>
+</dd>
+<dt class="field-odd">param v</dt>
+<dd class="field-odd"><p>V matrix.</p>
+</dd>
+<dt class="field-even">type v</dt>
+<dd class="field-even"><p>DynamicArray</p>
+</dd>
+<dt class="field-odd">param lf</dt>
+<dd class="field-odd"><p>Latent factors.</p>
+</dd>
+<dt class="field-even">type lf</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization._init_u">
+<code class="sig-name descname">_init_u</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization._init_u"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization._init_u" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which returns a computed U matrix.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param u</dt>
+<dd class="field-odd"><p>U matrix.</p>
+</dd>
+<dt class="field-even">type u</dt>
+<dd class="field-even"><p>DynamicArray</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization._init_u_v">
+<code class="sig-name descname">_init_u_v</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">u</span></em>, <em class="sig-param"><span class="n">v</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization._init_u_v"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization._init_u_v" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which returns a tuple (u, v) containing
+and initializes the U, V matrices.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param u</dt>
+<dd class="field-odd"><p>U matrix.</p>
+</dd>
+<dt class="field-even">type u</dt>
+<dd class="field-even"><p>DynamicArray</p>
+</dd>
+<dt class="field-odd">param v</dt>
+<dd class="field-odd"><p>V matrix.</p>
+</dd>
+<dt class="field-even">type v</dt>
+<dd class="field-even"><p>DynamicArray</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization._init_v">
+<code class="sig-name descname">_init_v</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization._init_v"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization._init_v" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which returns a computed V matrix.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param v</dt>
+<dd class="field-odd"><p>V matrix.</p>
+</dd>
+<dt class="field-even">type v</dt>
+<dd class="field-even"><p>DynamicArray</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization.predict">
 <code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">item_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization.predict" title="Permalink to this definition">¶</a></dt>
@@ -117,7 +211,7 @@ an item.</p>
 <dl class="py method">
 <dt id="algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization.recommend">
 <code class="sig-name descname">recommend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">n_rec</span></em>, <em class="sig-param"><span class="n">heuristic</span></em>, <em class="sig-param"><span class="n">repeated</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization.recommend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.matrix_factorization.MatrixFactorization.recommend" title="Permalink to this definition">¶</a></dt>
-<dd><dl>
+<dd><dl class="simple">
 <dt>Description</dt><dd><p>A function which returns recommendations for a user.</p>
 </dd>
 <dt>Arguments</dt><dd><dl class="field-list simple">
@@ -134,13 +228,18 @@ an item.</p>
 <dd class="field-even"><p>int</p>
 </dd>
 <dt class="field-odd">param heuristic</dt>
-<dd class="field-odd"><p>A function which takes a item and computes</p>
+<dd class="field-odd"><p>A function which takes a item and computes                a value to be used while sorting.</p>
+</dd>
+<dt class="field-even">type heuristic</dt>
+<dd class="field-even"><p>function</p>
+</dd>
+<dt class="field-odd">param repeated</dt>
+<dd class="field-odd"><p>Can be previously rated products be recommended.</p>
+</dd>
+<dt class="field-even">type repeated</dt>
+<dd class="field-even"><p>boolean</p>
 </dd>
 </dl>
-<p>a value to be used while sorting.
-:type heuristic: function
-:param repeated: Can be previously rated products be recommended.
-:type repeated: boolean</p>
 </dd>
 </dl>
 </dd></dl>
@@ -148,90 +247,73 @@ an item.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent">
-<span id="algorithms-collaborative-filtering-matrix-factorization-stochastic-gradient-descent-module"></span><h2>algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent module<a class="headerlink" href="#module-algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="algorithms-collaborative-filtering-matrix-factorization-stochastic-gradient-descent-module">
+<h2>algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent module<a class="headerlink" href="#algorithms-collaborative-filtering-matrix-factorization-stochastic-gradient-descent-module" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD">
 <em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.</code><code class="sig-name descname">SGD</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lr</span></em>, <em class="sig-param"><span class="n">reg</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/stochastic_gradient_descent.html#SGD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Stochastic Gradient Descent for matrix factorization.</p>
-</dd></dl>
-
-</div>
-<div class="section" id="module-algorithms.collaborative_filtering.matrix_factorization">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-algorithms.collaborative_filtering.matrix_factorization" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="algorithms.collaborative_filtering.matrix_factorization.MatrixFactorization">
-<em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.matrix_factorization.</code><code class="sig-name descname">MatrixFactorization</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span></em>, <em class="sig-param"><span class="n">u</span></em>, <em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">lf</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.MatrixFactorization" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="algorithms.collaborative_filtering.html#algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering" title="algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering</span></code></a></p>
-<dl class="simple">
-<dt>Description</dt><dd><p>Matrix factorization general class which extends
-CollaborativeFiltering.</p>
+<dd><p>Stochastic Gradient Descent for matrix factorization.</p>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lr</span></em>, <em class="sig-param"><span class="n">reg</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/stochastic_gradient_descent.html#SGD.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>SGD’s constructor.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param lr</dt>
+<dd class="field-odd"><p>The learning rate.</p>
+</dd>
+<dt class="field-even">type lr</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param reg</dt>
+<dd class="field-odd"><p>The regularization factor.</p>
+</dd>
+<dt class="field-even">type reg</dt>
+<dd class="field-even"><p>int</p>
 </dd>
 </dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
 <dl class="py method">
-<dt id="algorithms.collaborative_filtering.matrix_factorization.MatrixFactorization.predict">
-<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">item_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.MatrixFactorization.predict" title="Permalink to this definition">¶</a></dt>
+<dt id="algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD._update_factors">
+<code class="sig-name descname">_update_factors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">item_id</span></em>, <em class="sig-param"><span class="n">error</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/stochastic_gradient_descent.html#SGD._update_factors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD._update_factors" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
-<dt>Description</dt><dd><p>A function which returns a predition of a user’s rating to
-an item.</p>
+<dt>Description</dt><dd><p>A function which updates the latent factors in the
+U and V factorized matrices.</p>
 </dd>
 <dt>Arguments</dt><dd><dl class="field-list simple">
 <dt class="field-odd">param user_id</dt>
-<dd class="field-odd"><p>The user identifier.</p>
+<dd class="field-odd"><p>The latent vector to update on matrix U.</p>
 </dd>
 <dt class="field-even">type user_id</dt>
 <dd class="field-even"><p>int</p>
 </dd>
 <dt class="field-odd">param item_id</dt>
-<dd class="field-odd"><p>The item identifier.</p>
+<dd class="field-odd"><p>The latent vector to update on matrix V.</p>
 </dd>
 <dt class="field-even">type item_id</dt>
 <dd class="field-even"><p>int</p>
 </dd>
-</dl>
+<dt class="field-odd">param error</dt>
+<dd class="field-odd"><p>The error associated with the update.</p>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="algorithms.collaborative_filtering.matrix_factorization.MatrixFactorization.recommend">
-<code class="sig-name descname">recommend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">n_rec</span></em>, <em class="sig-param"><span class="n">heuristic</span></em>, <em class="sig-param"><span class="n">repeated</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/matrix_factorization.html#MatrixFactorization.recommend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.MatrixFactorization.recommend" title="Permalink to this definition">¶</a></dt>
-<dd><dl>
-<dt>Description</dt><dd><p>A function which returns recommendations for a user.</p>
-</dd>
-<dt>Arguments</dt><dd><dl class="field-list simple">
-<dt class="field-odd">param user_id</dt>
-<dd class="field-odd"><p>The user identifier.</p>
-</dd>
-<dt class="field-even">type user_id</dt>
+<dt class="field-even">type error</dt>
 <dd class="field-even"><p>int</p>
 </dd>
-<dt class="field-odd">param n_rec</dt>
-<dd class="field-odd"><p>The number of items to recommend.</p>
-</dd>
-<dt class="field-even">type n_rec</dt>
-<dd class="field-even"><p>int</p>
-</dd>
-<dt class="field-odd">param heuristic</dt>
-<dd class="field-odd"><p>A function which takes a item and computes</p>
-</dd>
 </dl>
-<p>a value to be used while sorting.
-:type heuristic: function
-:param repeated: Can be previously rated products be recommended.
-:type repeated: boolean</p>
 </dd>
 </dl>
 </dd></dl>
 
-</dd></dl>
-
-<dl class="py class">
-<dt id="algorithms.collaborative_filtering.matrix_factorization.SGD">
-<em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.matrix_factorization.</code><code class="sig-name descname">SGD</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lr</span></em>, <em class="sig-param"><span class="n">reg</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/matrix_factorization/stochastic_gradient_descent.html#SGD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.matrix_factorization.SGD" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Stochastic Gradient Descent for matrix factorization.</p>
 </dd></dl>
 
 </div>
@@ -249,9 +331,8 @@ an item.</p>
 <li><a class="reference internal" href="#">algorithms.collaborative_filtering.matrix_factorization package</a><ul>
 <li><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-algorithms.collaborative_filtering.matrix_factorization.matrix_factorization">algorithms.collaborative_filtering.matrix_factorization.matrix_factorization module</a></li>
-<li><a class="reference internal" href="#module-algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent">algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent module</a></li>
-<li><a class="reference internal" href="#module-algorithms.collaborative_filtering.matrix_factorization">Module contents</a></li>
+<li><a class="reference internal" href="#algorithms-collaborative-filtering-matrix-factorization-matrix-factorization-module">algorithms.collaborative_filtering.matrix_factorization.matrix_factorization module</a></li>
+<li><a class="reference internal" href="#algorithms-collaborative-filtering-matrix-factorization-stochastic-gradient-descent-module">algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent module</a></li>
 </ul>
 </li>
 </ul>

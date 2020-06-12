@@ -18,6 +18,8 @@
     <script src="_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="algorithms" href="modules.html" />
+    <link rel="prev" title="utils package" href="utils.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
@@ -32,6 +34,12 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="algorithms"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="utils.html" title="utils package"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">increc 0.0.13 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">graphic package</a></li> 
       </ul>
@@ -47,60 +55,101 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-graphic.static">
-<span id="graphic-static-module"></span><h2>graphic.static module<a class="headerlink" href="#module-graphic.static" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="graphic-static-module">
+<h2>graphic.static module<a class="headerlink" href="#graphic-static-module" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="graphic.static.EvaluationStatic">
 <em class="property">class </em><code class="sig-prename descclassname">graphic.static.</code><code class="sig-name descname">EvaluationStatic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stream</span></em>, <em class="sig-param"><span class="n">evaluator</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphic/static.html#EvaluationStatic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphic.static.EvaluationStatic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A class which displays a graphic which portrays the evolution
+of processing and recommendation time as well as accuracy
+of an algorithm when a dataset is processed incrementally.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="graphic.static.EvaluationStatic.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stream</span></em>, <em class="sig-param"><span class="n">evaluator</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphic/static.html#EvaluationStatic.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphic.static.EvaluationStatic.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>EvaluationStatic’s constructor.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param stream</dt>
+<dd class="field-odd"><p>A stream of ratings.</p>
+</dd>
+<dt class="field-even">type stream</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param evaluator</dt>
+<dd class="field-odd"><p>A evaluator object.</p>
+</dd>
+<dt class="field-even">type evaluator</dt>
+<dd class="field-even"><p>PrequentialEvaluator</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="graphic.static.EvaluationStatic.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#graphic.static.EvaluationStatic.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
 <dl class="py method">
 <dt id="graphic.static.EvaluationStatic.evaluate">
 <code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphic/static.html#EvaluationStatic.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphic.static.EvaluationStatic.evaluate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which evaluates the data stream.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="graphic.static.EvaluationStatic.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphic/static.html#EvaluationStatic.export"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphic.static.EvaluationStatic.export" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which exports the plots to an image format. Displays
+it if show=True.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param show</dt>
+<dd class="field-odd"><p>Does it show the image or not.</p>
+</dd>
+<dt class="field-even">type show</dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="graphic.static.EvaluationStatic.plot">
 <code class="sig-name descname">plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphic/static.html#EvaluationStatic.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphic.static.EvaluationStatic.plot" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which plots the 3 subplots.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="graphic.static.EvaluationStatic.process">
-<code class="sig-name descname">process</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphic/static.html#EvaluationStatic.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphic.static.EvaluationStatic.process" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="graphic.static.EvaluationStatic.show">
-<code class="sig-name descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphic/static.html#EvaluationStatic.show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphic.static.EvaluationStatic.show" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphic/static.html#EvaluationStatic.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphic.static.EvaluationStatic.process" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which processes a data stream and creates a graph.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param show</dt>
+<dd class="field-odd"><p>Does it show the image or not.</p>
+</dd>
+<dt class="field-even">type show</dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
-
-</div>
-<div class="section" id="module-graphic">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-graphic" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="graphic.EvaluationStatic">
-<em class="property">class </em><code class="sig-prename descclassname">graphic.</code><code class="sig-name descname">EvaluationStatic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stream</span></em>, <em class="sig-param"><span class="n">evaluator</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphic/static.html#EvaluationStatic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphic.EvaluationStatic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt id="graphic.EvaluationStatic.evaluate">
-<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphic/static.html#EvaluationStatic.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphic.EvaluationStatic.evaluate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="graphic.EvaluationStatic.plot">
-<code class="sig-name descname">plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphic/static.html#EvaluationStatic.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphic.EvaluationStatic.plot" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="graphic.EvaluationStatic.process">
-<code class="sig-name descname">process</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphic/static.html#EvaluationStatic.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphic.EvaluationStatic.process" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="graphic.EvaluationStatic.show">
-<code class="sig-name descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphic/static.html#EvaluationStatic.show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphic.EvaluationStatic.show" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
@@ -118,12 +167,17 @@
   <ul>
 <li><a class="reference internal" href="#">graphic package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-graphic.static">graphic.static module</a></li>
-<li><a class="reference internal" href="#module-graphic">Module contents</a></li>
+<li><a class="reference internal" href="#graphic-static-module">graphic.static module</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="utils.html"
+                        title="previous chapter">utils package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="modules.html"
+                        title="next chapter">algorithms</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -154,6 +208,12 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="algorithms"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="utils.html" title="utils package"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">increc 0.0.13 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">graphic package</a></li> 
       </ul>

@@ -48,6 +48,18 @@
 
 
 <div class="viewcode-block" id="cosine_similarity"><a class="viewcode-back" href="../../utils.html#utils.utils.cosine_similarity">[docs]</a><span class="k">def</span> <span class="nf">cosine_similarity</span><span class="p">(</span><span class="n">n_co_elements</span><span class="p">,</span> <span class="n">n_first_element</span><span class="p">,</span> <span class="n">n_second_element</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A function which returns the cosine similarity between two elements.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">        :param n_co_elements: Number of co-elements.</span>
+<span class="sd">        :type n_co_elements: int</span>
+<span class="sd">        :param n_first_element: Size of the first element.</span>
+<span class="sd">        :type n_first_element: int</span>
+<span class="sd">        :param n_second_element: Size of the second element</span>
+<span class="sd">        :type n_second_element: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">n_co_elements</span> <span class="o">/</span> <span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n_first_element</span><span class="p">)</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">n_second_element</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
@@ -56,18 +68,63 @@
 
 <div class="viewcode-block" id="covariance"><a class="viewcode-back" href="../../utils.html#utils.utils.covariance">[docs]</a><span class="k">def</span> <span class="nf">covariance</span><span class="p">(</span><span class="n">co_elements</span><span class="p">,</span> <span class="n">first_set</span><span class="p">,</span> <span class="n">second_set</span><span class="p">,</span>
                <span class="n">first_set_avg</span><span class="p">,</span> <span class="n">second_set_avg</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A function which returns the covariance between two elements.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">        :param co_elements: Number of co-elements.</span>
+<span class="sd">        :type co_elements: int</span>
+<span class="sd">        :param first_set: The first element.</span>
+<span class="sd">        :type first_set: list</span>
+<span class="sd">        :param second_set: The second element.</span>
+<span class="sd">        :type second_set: list</span>
+<span class="sd">        :param first_set_avg: Average of first set.</span>
+<span class="sd">        :type first_set_avg: float</span>
+<span class="sd">        :param second_set_avg: Average of second set.</span>
+<span class="sd">        :type second_set_avg: float.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">sum</span><span class="p">([(</span><span class="n">first_set</span><span class="p">[</span><span class="n">identifier</span><span class="p">]</span> <span class="o">-</span> <span class="n">first_set_avg</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span>
         <span class="n">second_set</span><span class="p">[</span><span class="n">identifier</span><span class="p">]</span> <span class="o">-</span> <span class="n">second_set_avg</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="n">co_elements</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="variance"><a class="viewcode-back" href="../../utils.html#utils.utils.variance">[docs]</a><span class="k">def</span> <span class="nf">variance</span><span class="p">(</span><span class="n">co_elements</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">avg_elements</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A function which returns the variance of an element.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">        :param co_elements: Number of co-elements.</span>
+<span class="sd">        :type co_elements: int</span>
+<span class="sd">        :param elements: The element.</span>
+<span class="sd">        :type elements: list</span>
+<span class="sd">        :param avg_elements: Element&#39;s average.</span>
+<span class="sd">        :type avg_elements: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="nb">sum</span><span class="p">([(</span><span class="n">elements</span><span class="p">[</span><span class="n">identifier</span><span class="p">]</span> <span class="o">-</span> <span class="n">avg_elements</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
                  <span class="k">for</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="n">co_elements</span><span class="p">]))</span></div>
 
 
 <div class="viewcode-block" id="pearson_correlation_terms"><a class="viewcode-back" href="../../utils.html#utils.utils.pearson_correlation_terms">[docs]</a><span class="k">def</span> <span class="nf">pearson_correlation_terms</span><span class="p">(</span><span class="n">co_elements</span><span class="p">,</span> <span class="n">first_set</span><span class="p">,</span> <span class="n">second_set</span><span class="p">,</span>
                               <span class="n">first_set_avg</span><span class="p">,</span> <span class="n">second_set_avg</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A function which returns the pearson correlation terms between</span>
+<span class="sd">        two elements.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">        :param co_elements: Number of co-elements.</span>
+<span class="sd">        :type co_elements: int</span>
+<span class="sd">        :param first_set: The first element.</span>
+<span class="sd">        :type first_set: list</span>
+<span class="sd">        :param second_set: The second element.</span>
+<span class="sd">        :type second_set: list</span>
+<span class="sd">        :param first_set_avg: Average of first element.</span>
+<span class="sd">        :type first_set_avg: float</span>
+<span class="sd">        :param second_set_avg: Average of second element.</span>
+<span class="sd">        :type second_set_avg: float.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cov</span> <span class="o">=</span> <span class="n">covariance</span><span class="p">(</span><span class="n">co_elements</span><span class="p">,</span> <span class="n">first_set</span><span class="p">,</span> <span class="n">second_set</span><span class="p">,</span>
                      <span class="n">first_set_avg</span><span class="p">,</span> <span class="n">second_set_avg</span><span class="p">)</span>
     <span class="n">variance_first</span> <span class="o">=</span> <span class="n">variance</span><span class="p">(</span><span class="n">co_elements</span><span class="p">,</span> <span class="n">first_set</span><span class="p">,</span> <span class="n">first_set_avg</span><span class="p">)</span>
@@ -77,6 +134,19 @@
 
 
 <div class="viewcode-block" id="pearson_correlation"><a class="viewcode-back" href="../../utils.html#utils.utils.pearson_correlation">[docs]</a><span class="k">def</span> <span class="nf">pearson_correlation</span><span class="p">(</span><span class="n">covariance</span><span class="p">,</span> <span class="n">variance_first</span><span class="p">,</span> <span class="n">variance_second</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A function which returns the pearson correlation between</span>
+<span class="sd">        two elements.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">        :param covariance: The covariance between the two elements.</span>
+<span class="sd">        :type covariance: float</span>
+<span class="sd">        :param variance_first: The first element&#39;s variance.</span>
+<span class="sd">        :type variance_first: float</span>
+<span class="sd">        :param variance_second: The second element&#39;s variance.</span>
+<span class="sd">        :type variance_second: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">covariance</span> <span class="o">/</span> <span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance_first</span><span class="p">)</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">variance_second</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
@@ -85,17 +155,53 @@
 
 <span class="c1"># returns the ids</span>
 <div class="viewcode-block" id="knn"><a class="viewcode-back" href="../../utils.html#utils.utils.knn">[docs]</a><span class="k">def</span> <span class="nf">knn</span><span class="p">(</span><span class="n">element_id</span><span class="p">,</span> <span class="n">candidates</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">heuristic</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A function which returns the k(n)-nearest-neighbors of the</span>
+<span class="sd">        element_id according to an heuristic.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">        :param element_id: The element for which to calculate neighbors for.</span>
+<span class="sd">        :type element_id: int</span>
+<span class="sd">        :param candidates: The candidates to neighbors.</span>
+<span class="sd">        :type candidates: set</span>
+<span class="sd">        :param n: Number of neighbors.</span>
+<span class="sd">        :type n: int</span>
+<span class="sd">        :param heuristic: Heuristic to sort the candidates by.</span>
+<span class="sd">        :type heuristic: function</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">candidates</span><span class="p">,</span>
                   <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">another_element_id</span><span class="p">:</span> <span class="n">heuristic</span><span class="p">(</span>
                       <span class="n">element_id</span><span class="p">,</span> <span class="n">another_element_id</span><span class="p">))[</span><span class="o">-</span><span class="n">n</span><span class="p">:]</span></div>
 
 
 <div class="viewcode-block" id="avg"><a class="viewcode-back" href="../../utils.html#utils.utils.avg">[docs]</a><span class="k">def</span> <span class="nf">avg</span><span class="p">(</span><span class="n">elements</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A function which computes and returns the average of a set.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">        :param elements: The element to calculate the average for.</span>
+<span class="sd">        :type elements: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">not_none</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">elements</span><span class="p">))</span>
     <span class="k">return</span> <span class="mi">0</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">not_none</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">sum</span><span class="p">(</span><span class="n">not_none</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">not_none</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="increment_avg"><a class="viewcode-back" href="../../utils.html#utils.utils.increment_avg">[docs]</a><span class="k">def</span> <span class="nf">increment_avg</span><span class="p">(</span><span class="n">old_avg</span><span class="p">,</span> <span class="n">new_value</span><span class="p">,</span> <span class="n">elements</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A function which increments and returns the average of a set.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">        :param old_avg: The currrent average.</span>
+<span class="sd">        :type old_avg: float</span>
+<span class="sd">        :param new_value: The new value which changes the average.</span>
+<span class="sd">        :type new_value: float</span>
+<span class="sd">        :param elements: The element for which we want to increment the \</span>
+<span class="sd">            average.</span>
+<span class="sd">        :type elements: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">not_none</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">elements</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">old_avg</span> <span class="o">+</span> <span class="p">(</span><span class="n">new_value</span> <span class="o">-</span> <span class="n">old_avg</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">not_none</span><span class="p">)</span></div>
 </pre></div>

@@ -18,6 +18,8 @@
     <script src="_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="stream.file_stream.explicit package" href="stream.file_stream.explicit.html" />
+    <link rel="prev" title="stream package" href="stream.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
@@ -32,7 +34,14 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="stream.file_stream.explicit.html" title="stream.file_stream.explicit package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="stream.html" title="stream package"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">increc 0.0.13 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="stream.html" accesskey="U">stream package</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">stream.file_stream package</a></li> 
       </ul>
     </div>  
@@ -50,14 +59,12 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="stream.file_stream.explicit.html">stream.file_stream.explicit package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="stream.file_stream.explicit.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stream.file_stream.explicit.html#module-stream.file_stream.explicit.file_stream">stream.file_stream.explicit.file_stream module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stream.file_stream.explicit.html#module-stream.file_stream.explicit">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream.file_stream.explicit.html#stream-file-stream-explicit-file-stream-module">stream.file_stream.explicit.file_stream module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="stream.file_stream.implicit.html">stream.file_stream.implicit package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="stream.file_stream.implicit.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stream.file_stream.implicit.html#module-stream.file_stream.implicit.file_stream">stream.file_stream.implicit.file_stream module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stream.file_stream.implicit.html#module-stream.file_stream.implicit">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream.file_stream.implicit.html#stream-file-stream-implicit-file-stream-module">stream.file_stream.implicit.file_stream module</a></li>
 </ul>
 </li>
 </ul>
@@ -66,30 +73,90 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-stream.file_stream.file_stream">
-<span id="stream-file-stream-file-stream-module"></span><h2>stream.file_stream.file_stream module<a class="headerlink" href="#module-stream.file_stream.file_stream" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="stream-file-stream-file-stream-module">
+<h2>stream.file_stream.file_stream module<a class="headerlink" href="#stream-file-stream-file-stream-module" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="stream.file_stream.file_stream.FileStream">
 <em class="property">class </em><code class="sig-prename descclassname">stream.file_stream.file_stream.</code><code class="sig-name descname">FileStream</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">sep</span><span class="o">=</span><span class="default_value">' '</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stream/file_stream/file_stream.html#FileStream"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stream.file_stream.file_stream.FileStream" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A class which encapsulates common logic for the
+implicit and explicit versions, and creates a data
+stream with ratings out of a file dataset.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="stream.file_stream.file_stream.FileStream.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">sep</span><span class="o">=</span><span class="default_value">' '</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stream/file_stream/file_stream.html#FileStream.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stream.file_stream.file_stream.FileStream.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>FileStream’s constructor</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param path</dt>
+<dd class="field-odd"><p>The path to the file.</p>
+</dd>
+<dt class="field-even">type path</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">param sep</dt>
+<dd class="field-odd"><p>A character which separates the field in each line.</p>
+</dd>
+<dt class="field-even">type sep</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stream.file_stream.file_stream.FileStream.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#stream.file_stream.file_stream.FileStream.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stream.file_stream.file_stream.FileStream._parse_file">
+<code class="sig-name descname">_parse_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">sep</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stream/file_stream/file_stream.html#FileStream._parse_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stream.file_stream.file_stream.FileStream._parse_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which parsed a file and returns a
+data stream list.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param path</dt>
+<dd class="field-odd"><p>The path to the file.</p>
+</dd>
+<dt class="field-even">type path</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">param sep</dt>
+<dd class="field-odd"><p>A character which separates the field in each line.</p>
+</dd>
+<dt class="field-even">type sep</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="stream.file_stream.file_stream.FileStream.process_stream">
 <code class="sig-name descname">process_stream</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stream/file_stream/file_stream.html#FileStream.process_stream"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stream.file_stream.file_stream.FileStream.process_stream" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which processes a data stream
+with a recomendation model.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param path</dt>
+<dd class="field-odd"><p>A recommendation algorithm or evaluator.</p>
+</dd>
+<dt class="field-even">type path</dt>
+<dd class="field-even"><p>CollaborativeFiltering or PrequentialEvaluator.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
-
-</div>
-<div class="section" id="module-stream.file_stream">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-stream.file_stream" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="stream.file_stream.FileStream">
-<em class="property">class </em><code class="sig-prename descclassname">stream.file_stream.</code><code class="sig-name descname">FileStream</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">sep</span><span class="o">=</span><span class="default_value">' '</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stream/file_stream/file_stream.html#FileStream"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stream.file_stream.FileStream" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt id="stream.file_stream.FileStream.process_stream">
-<code class="sig-name descname">process_stream</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stream/file_stream/file_stream.html#FileStream.process_stream"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stream.file_stream.FileStream.process_stream" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
@@ -108,12 +175,17 @@
 <li><a class="reference internal" href="#">stream.file_stream package</a><ul>
 <li><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-stream.file_stream.file_stream">stream.file_stream.file_stream module</a></li>
-<li><a class="reference internal" href="#module-stream.file_stream">Module contents</a></li>
+<li><a class="reference internal" href="#stream-file-stream-file-stream-module">stream.file_stream.file_stream module</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="stream.html"
+                        title="previous chapter">stream package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="stream.file_stream.explicit.html"
+                        title="next chapter">stream.file_stream.explicit package</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -144,7 +216,14 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="stream.file_stream.explicit.html" title="stream.file_stream.explicit package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="stream.html" title="stream package"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">increc 0.0.13 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="stream.html" >stream package</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">stream.file_stream package</a></li> 
       </ul>
     </div>

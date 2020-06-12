@@ -18,6 +18,8 @@
     <script src="_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="graphic package" href="graphic.html" />
+    <link rel="prev" title="stream.file_stream.implicit package" href="stream.file_stream.implicit.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
@@ -32,6 +34,12 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="graphic.html" title="graphic package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="stream.file_stream.implicit.html" title="stream.file_stream.implicit package"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">increc 0.0.13 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">utils package</a></li> 
       </ul>
@@ -52,91 +60,263 @@
 <dl class="py function">
 <dt id="utils.utils.avg">
 <code class="sig-prename descclassname">utils.utils.</code><code class="sig-name descname">avg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">elements</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#avg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.avg" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which computes and returns the average of a set.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param elements</dt>
+<dd class="field-odd"><p>The element to calculate the average for.</p>
+</dd>
+<dt class="field-even">type elements</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="utils.utils.cosine_similarity">
 <code class="sig-prename descclassname">utils.utils.</code><code class="sig-name descname">cosine_similarity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_co_elements</span></em>, <em class="sig-param"><span class="n">n_first_element</span></em>, <em class="sig-param"><span class="n">n_second_element</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#cosine_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.cosine_similarity" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which returns the cosine similarity between two elements.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param n_co_elements</dt>
+<dd class="field-odd"><p>Number of co-elements.</p>
+</dd>
+<dt class="field-even">type n_co_elements</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param n_first_element</dt>
+<dd class="field-odd"><p>Size of the first element.</p>
+</dd>
+<dt class="field-even">type n_first_element</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param n_second_element</dt>
+<dd class="field-odd"><p>Size of the second element</p>
+</dd>
+<dt class="field-even">type n_second_element</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="utils.utils.covariance">
 <code class="sig-prename descclassname">utils.utils.</code><code class="sig-name descname">covariance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">co_elements</span></em>, <em class="sig-param"><span class="n">first_set</span></em>, <em class="sig-param"><span class="n">second_set</span></em>, <em class="sig-param"><span class="n">first_set_avg</span></em>, <em class="sig-param"><span class="n">second_set_avg</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#covariance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.covariance" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which returns the covariance between two elements.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param co_elements</dt>
+<dd class="field-odd"><p>Number of co-elements.</p>
+</dd>
+<dt class="field-even">type co_elements</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param first_set</dt>
+<dd class="field-odd"><p>The first element.</p>
+</dd>
+<dt class="field-even">type first_set</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param second_set</dt>
+<dd class="field-odd"><p>The second element.</p>
+</dd>
+<dt class="field-even">type second_set</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param first_set_avg</dt>
+<dd class="field-odd"><p>Average of first set.</p>
+</dd>
+<dt class="field-even">type first_set_avg</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">param second_set_avg</dt>
+<dd class="field-odd"><p>Average of second set.</p>
+</dd>
+<dt class="field-even">type second_set_avg</dt>
+<dd class="field-even"><p>float.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="utils.utils.increment_avg">
 <code class="sig-prename descclassname">utils.utils.</code><code class="sig-name descname">increment_avg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">old_avg</span></em>, <em class="sig-param"><span class="n">new_value</span></em>, <em class="sig-param"><span class="n">elements</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#increment_avg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.increment_avg" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which increments and returns the average of a set.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param old_avg</dt>
+<dd class="field-odd"><p>The currrent average.</p>
+</dd>
+<dt class="field-even">type old_avg</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">param new_value</dt>
+<dd class="field-odd"><p>The new value which changes the average.</p>
+</dd>
+<dt class="field-even">type new_value</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">param elements</dt>
+<dd class="field-odd"><p>The element for which we want to increment the             average.</p>
+</dd>
+<dt class="field-even">type elements</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="utils.utils.knn">
 <code class="sig-prename descclassname">utils.utils.</code><code class="sig-name descname">knn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">element_id</span></em>, <em class="sig-param"><span class="n">candidates</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">heuristic</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#knn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.knn" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which returns the k(n)-nearest-neighbors of the
+element_id according to an heuristic.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param element_id</dt>
+<dd class="field-odd"><p>The element for which to calculate neighbors for.</p>
+</dd>
+<dt class="field-even">type element_id</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param candidates</dt>
+<dd class="field-odd"><p>The candidates to neighbors.</p>
+</dd>
+<dt class="field-even">type candidates</dt>
+<dd class="field-even"><p>set</p>
+</dd>
+<dt class="field-odd">param n</dt>
+<dd class="field-odd"><p>Number of neighbors.</p>
+</dd>
+<dt class="field-even">type n</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param heuristic</dt>
+<dd class="field-odd"><p>Heuristic to sort the candidates by.</p>
+</dd>
+<dt class="field-even">type heuristic</dt>
+<dd class="field-even"><p>function</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="utils.utils.pearson_correlation">
 <code class="sig-prename descclassname">utils.utils.</code><code class="sig-name descname">pearson_correlation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">covariance</span></em>, <em class="sig-param"><span class="n">variance_first</span></em>, <em class="sig-param"><span class="n">variance_second</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#pearson_correlation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.pearson_correlation" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which returns the pearson correlation between
+two elements.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param covariance</dt>
+<dd class="field-odd"><p>The covariance between the two elements.</p>
+</dd>
+<dt class="field-even">type covariance</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">param variance_first</dt>
+<dd class="field-odd"><p>The first element’s variance.</p>
+</dd>
+<dt class="field-even">type variance_first</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">param variance_second</dt>
+<dd class="field-odd"><p>The second element’s variance.</p>
+</dd>
+<dt class="field-even">type variance_second</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="utils.utils.pearson_correlation_terms">
 <code class="sig-prename descclassname">utils.utils.</code><code class="sig-name descname">pearson_correlation_terms</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">co_elements</span></em>, <em class="sig-param"><span class="n">first_set</span></em>, <em class="sig-param"><span class="n">second_set</span></em>, <em class="sig-param"><span class="n">first_set_avg</span></em>, <em class="sig-param"><span class="n">second_set_avg</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#pearson_correlation_terms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.pearson_correlation_terms" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which returns the pearson correlation terms between
+two elements.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param co_elements</dt>
+<dd class="field-odd"><p>Number of co-elements.</p>
+</dd>
+<dt class="field-even">type co_elements</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param first_set</dt>
+<dd class="field-odd"><p>The first element.</p>
+</dd>
+<dt class="field-even">type first_set</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param second_set</dt>
+<dd class="field-odd"><p>The second element.</p>
+</dd>
+<dt class="field-even">type second_set</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param first_set_avg</dt>
+<dd class="field-odd"><p>Average of first element.</p>
+</dd>
+<dt class="field-even">type first_set_avg</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">param second_set_avg</dt>
+<dd class="field-odd"><p>Average of second element.</p>
+</dd>
+<dt class="field-even">type second_set_avg</dt>
+<dd class="field-even"><p>float.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="utils.utils.variance">
 <code class="sig-prename descclassname">utils.utils.</code><code class="sig-name descname">variance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">co_elements</span></em>, <em class="sig-param"><span class="n">elements</span></em>, <em class="sig-param"><span class="n">avg_elements</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#variance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.variance" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</div>
-<div class="section" id="module-utils">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-utils" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt id="utils.avg">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">avg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">elements</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#avg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.avg" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="utils.cosine_similarity">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">cosine_similarity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_co_elements</span></em>, <em class="sig-param"><span class="n">n_first_element</span></em>, <em class="sig-param"><span class="n">n_second_element</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#cosine_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.cosine_similarity" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="utils.covariance">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">covariance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">co_elements</span></em>, <em class="sig-param"><span class="n">first_set</span></em>, <em class="sig-param"><span class="n">second_set</span></em>, <em class="sig-param"><span class="n">first_set_avg</span></em>, <em class="sig-param"><span class="n">second_set_avg</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#covariance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.covariance" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="utils.increment_avg">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">increment_avg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">old_avg</span></em>, <em class="sig-param"><span class="n">new_value</span></em>, <em class="sig-param"><span class="n">elements</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#increment_avg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.increment_avg" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="utils.knn">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">knn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">element_id</span></em>, <em class="sig-param"><span class="n">candidates</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">heuristic</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#knn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.knn" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="utils.pearson_correlation">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">pearson_correlation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">covariance</span></em>, <em class="sig-param"><span class="n">variance_first</span></em>, <em class="sig-param"><span class="n">variance_second</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#pearson_correlation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.pearson_correlation" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="utils.pearson_correlation_terms">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">pearson_correlation_terms</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">co_elements</span></em>, <em class="sig-param"><span class="n">first_set</span></em>, <em class="sig-param"><span class="n">second_set</span></em>, <em class="sig-param"><span class="n">first_set_avg</span></em>, <em class="sig-param"><span class="n">second_set_avg</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#pearson_correlation_terms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.pearson_correlation_terms" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="utils.sqrt">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">sqrt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="o">/</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.sqrt" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the square root of x.</p>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which returns the variance of an element.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param co_elements</dt>
+<dd class="field-odd"><p>Number of co-elements.</p>
+</dd>
+<dt class="field-even">type co_elements</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param elements</dt>
+<dd class="field-odd"><p>The element.</p>
+</dd>
+<dt class="field-even">type elements</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param avg_elements</dt>
+<dd class="field-odd"><p>Element’s average.</p>
+</dd>
+<dt class="field-even">type avg_elements</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
-
-<dl class="py function">
-<dt id="utils.variance">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">variance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">co_elements</span></em>, <em class="sig-param"><span class="n">elements</span></em>, <em class="sig-param"><span class="n">avg_elements</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/utils.html#variance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.variance" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </div>
 </div>
@@ -153,11 +333,16 @@
 <li><a class="reference internal" href="#">utils package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-utils.utils">utils.utils module</a></li>
-<li><a class="reference internal" href="#module-utils">Module contents</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="stream.file_stream.implicit.html"
+                        title="previous chapter">stream.file_stream.implicit package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="graphic.html"
+                        title="next chapter">graphic package</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -188,6 +373,12 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="graphic.html" title="graphic package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="stream.file_stream.implicit.html" title="stream.file_stream.implicit package"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">increc 0.0.13 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">utils package</a></li> 
       </ul>

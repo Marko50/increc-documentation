@@ -52,7 +52,7 @@
 <div class="viewcode-block" id="SGD"><a class="viewcode-back" href="../../../../algorithms.collaborative_filtering.matrix_factorization.html#algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD">[docs]</a><span class="k">class</span> <span class="nc">SGD</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; Stochastic Gradient Descent for matrix factorization.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">reg</span><span class="p">):</span>
+<div class="viewcode-block" id="SGD.__init__"><a class="viewcode-back" href="../../../../algorithms.collaborative_filtering.matrix_factorization.html#algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">reg</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            SGD&#39;s constructor.</span>
@@ -64,9 +64,9 @@
 <span class="sd">            :type reg: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">=</span> <span class="n">lr</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">reg_factor</span> <span class="o">=</span> <span class="n">reg</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reg_factor</span> <span class="o">=</span> <span class="n">reg</span></div>
 
-    <span class="k">def</span> <span class="nf">_update_factors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">error</span><span class="p">):</span>
+<div class="viewcode-block" id="SGD._update_factors"><a class="viewcode-back" href="../../../../algorithms.collaborative_filtering.matrix_factorization.html#algorithms.collaborative_filtering.matrix_factorization.stochastic_gradient_descent.SGD._update_factors">[docs]</a>    <span class="k">def</span> <span class="nf">_update_factors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">error</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            A function which updates the latent factors in the</span>
@@ -88,7 +88,7 @@
             <span class="n">error</span> <span class="o">*</span> <span class="n">u_factors</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">reg_factor</span> <span class="o">*</span> <span class="n">v_factors</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">DynamicArray</span><span class="p">(</span>
             <span class="nb">list</span><span class="p">(</span><span class="n">updated_u</span><span class="p">),</span> <span class="n">default_value</span><span class="o">=</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">set_col</span><span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">updated_v</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">set_col</span><span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">updated_v</span><span class="p">)</span></div></div>
 </pre></div>
 
             <div class="clearer"></div>

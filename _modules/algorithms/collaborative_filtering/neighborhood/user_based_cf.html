@@ -55,7 +55,7 @@
 <span class="sd">        co-rated items and similarities. Extends</span>
 <span class="sd">        CollaborativeFiltering.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">co_rated</span><span class="p">):</span>
+<div class="viewcode-block" id="UserBasedCF.__init__"><a class="viewcode-back" href="../../../../algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.user_based_cf.UserBasedCF.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">co_rated</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            UserBasedCF&#39;s constructor.</span>
@@ -69,9 +69,9 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">co_rated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_model</span><span class="p">(</span><span class="n">co_rated</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_co_rated</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">users</span> <span class="o">=</span> <span class="p">{</span><span class="n">u_id</span> <span class="k">for</span> <span class="n">u_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span>
-            <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">))</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">co_rated_between</span><span class="p">(</span><span class="n">u_id</span><span class="p">,</span> <span class="n">u_id</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">}</span>
+            <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">))</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">co_rated_between</span><span class="p">(</span><span class="n">u_id</span><span class="p">,</span> <span class="n">u_id</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">}</span></div>
 
-    <span class="k">def</span> <span class="nf">_init_similarities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UserBasedCF._init_similarities"><a class="viewcode-back" href="../../../../algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.user_based_cf.UserBasedCF._init_similarities">[docs]</a>    <span class="k">def</span> <span class="nf">_init_similarities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            A function which returns the similarity matrix, which is</span>
@@ -83,10 +83,10 @@
             <span class="k">for</span> <span class="n">another_user_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">user_id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
                 <span class="n">sims</span><span class="p">[(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_similarity</span><span class="p">(</span>
                     <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">sims</span>
+        <span class="k">return</span> <span class="n">sims</span></div>
 
     <span class="c1"># initializing the co rated items with the item id&#39;s</span>
-    <span class="k">def</span> <span class="nf">_init_co_rated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UserBasedCF._init_co_rated"><a class="viewcode-back" href="../../../../algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.user_based_cf.UserBasedCF._init_co_rated">[docs]</a>    <span class="k">def</span> <span class="nf">_init_co_rated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            A function which returns the co-rated items matrix,</span>
@@ -103,10 +103,10 @@
                     <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">user</span><span class="p">),</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">another_user</span><span class="p">))</span>
                     <span class="k">if</span> <span class="p">(</span><span class="n">user_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">another_user_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
                         <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)])</span>
-        <span class="k">return</span> <span class="n">co_rated</span>
+        <span class="k">return</span> <span class="n">co_rated</span></div>
 
     <span class="c1"># updating the co_rated matrix inside the model</span>
-    <span class="k">def</span> <span class="nf">_update_co_rated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">comp</span><span class="p">):</span>
+<div class="viewcode-block" id="UserBasedCF._update_co_rated"><a class="viewcode-back" href="../../../../algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.user_based_cf.UserBasedCF._update_co_rated">[docs]</a>    <span class="k">def</span> <span class="nf">_update_co_rated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">comp</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            A function which updates the co-rated items matrix.</span>
@@ -122,7 +122,7 @@
         <span class="k">for</span> <span class="n">another_user_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">comp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">another_user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">co_rated</span><span class="p">[(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">)]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-                    <span class="n">item_id</span><span class="p">)</span>
+                    <span class="n">item_id</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="UserBasedCF.co_rated_between"><a class="viewcode-back" href="../../../../algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.user_based_cf.UserBasedCF.co_rated_between">[docs]</a>    <span class="k">def</span> <span class="nf">co_rated_between</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">another_user_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

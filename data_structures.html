@@ -18,6 +18,8 @@
     <script src="_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="stream package" href="stream.html" />
+    <link rel="prev" title="algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based package" href="algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
@@ -32,6 +34,12 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="stream.html" title="stream package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html" title="algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based package"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">increc 0.0.13 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">data_structures package</a></li> 
       </ul>
@@ -47,111 +55,384 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-data_structures.dynamic_array">
-<span id="data-structures-dynamic-array-module"></span><h2>data_structures.dynamic_array module<a class="headerlink" href="#module-data_structures.dynamic_array" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-structures-dynamic-array-module">
+<h2>data_structures.dynamic_array module<a class="headerlink" href="#data-structures-dynamic-array-module" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="data_structures.dynamic_array.DynamicArray">
 <em class="property">class </em><code class="sig-prename descclassname">data_structures.dynamic_array.</code><code class="sig-name descname">DynamicArray</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">default_value=&lt;function DynamicArray.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/dynamic_array.html#DynamicArray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.dynamic_array.DynamicArray" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A class which implements a dynamic data structure
+under the disguise of a list.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="data_structures.dynamic_array.DynamicArray.__getitem__">
+<code class="sig-name descname">__getitem__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/dynamic_array.html#DynamicArray.__getitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.dynamic_array.DynamicArray.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description.</dt><dd><p>Overriding the __getitem__ function.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param position</dt>
+<dd class="field-odd"><p>The index to access.</p>
+</dd>
+<dt class="field-even">type position</dt>
+<dd class="field-even"><p>slice or int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="data_structures.dynamic_array.DynamicArray.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">default_value=&lt;function DynamicArray.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/dynamic_array.html#DynamicArray.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.dynamic_array.DynamicArray.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>DynamicArray’s constructor.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param data</dt>
+<dd class="field-odd"><p>The actual metadata to encapsulate.</p>
+</dd>
+<dt class="field-even">type data</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param default_value</dt>
+<dd class="field-odd"><p>A function which returns a default                value when extending the metadata for uninitialized                    positions.</p>
+</dd>
+<dt class="field-even">type default_value</dt>
+<dd class="field-even"><p>function</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="data_structures.dynamic_array.DynamicArray.__iter__">
+<code class="sig-name descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/dynamic_array.html#DynamicArray.__iter__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.dynamic_array.DynamicArray.__iter__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description.</dt><dd><p>Overriding the __iter__ function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="data_structures.dynamic_array.DynamicArray.__len__">
+<code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/dynamic_array.html#DynamicArray.__len__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.dynamic_array.DynamicArray.__len__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description.</dt><dd><p>Overriding the __len__ function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="data_structures.dynamic_array.DynamicArray.__setitem__">
+<code class="sig-name descname">__setitem__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/dynamic_array.html#DynamicArray.__setitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.dynamic_array.DynamicArray.__setitem__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description.</dt><dd><p>Overriding the __setitem__ function.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param position</dt>
+<dd class="field-odd"><p>The index to access.</p>
+</dd>
+<dt class="field-even">type position</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="data_structures.dynamic_array.DynamicArray.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#data_structures.dynamic_array.DynamicArray.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
 <dl class="py method">
 <dt id="data_structures.dynamic_array.DynamicArray.append">
 <code class="sig-name descname">append</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/dynamic_array.html#DynamicArray.append"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.dynamic_array.DynamicArray.append" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which appends a new value into _data.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param value</dt>
+<dd class="field-odd"><p>The new value.</p>
+</dd>
+<dt class="field-even">type value</dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="data_structures.dynamic_array.DynamicArray.col">
 <code class="sig-name descname">col</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/dynamic_array.html#DynamicArray.col"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.dynamic_array.DynamicArray.col" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>When _data contains other DynamicArray objects, making
+this a matrix, it returns a column list object.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param position</dt>
+<dd class="field-odd"><p>The column index.</p>
+</dd>
+<dt class="field-even">type position</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="data_structures.dynamic_array.DynamicArray.extend">
 <code class="sig-name descname">extend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/dynamic_array.html#DynamicArray.extend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.dynamic_array.DynamicArray.extend" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which allocates more memory for the internal
+_data list.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param position</dt>
+<dd class="field-odd"><p>The index which was accessed.</p>
+</dd>
+<dt class="field-even">type position</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="data_structures.dynamic_array.DynamicArray.set_col">
 <code class="sig-name descname">set_col</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/dynamic_array.html#DynamicArray.set_col"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.dynamic_array.DynamicArray.set_col" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>When _data contains other DynamicArray objects, making
+this a matrix, this function sets the value for a column.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param position</dt>
+<dd class="field-odd"><p>The column index.</p>
+</dd>
+<dt class="field-even">type position</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param value</dt>
+<dd class="field-odd"><p>The column.</p>
+</dd>
+<dt class="field-even">type value</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
 </div>
-<div class="section" id="module-data_structures.pair_variances">
-<span id="data-structures-pair-variances-module"></span><h2>data_structures.pair_variances module<a class="headerlink" href="#module-data_structures.pair_variances" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-structures-pair-variances-module">
+<h2>data_structures.pair_variances module<a class="headerlink" href="#data-structures-pair-variances-module" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="data_structures.pair_variances.PairVariances">
 <em class="property">class </em><code class="sig-prename descclassname">data_structures.pair_variances.</code><code class="sig-name descname">PairVariances</code><a class="reference internal" href="_modules/data_structures/pair_variances.html#PairVariances"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.pair_variances.PairVariances" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A class which implements a useful data structure
+which stores variance pairs for the user-based neighboorhod
+explicit algorithm.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="data_structures.pair_variances.PairVariances.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/pair_variances.html#PairVariances.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.pair_variances.PairVariances.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>PairVariances’s constructor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="data_structures.pair_variances.PairVariances.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#data_structures.pair_variances.PairVariances.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
 <dl class="py method">
 <dt id="data_structures.pair_variances.PairVariances.set_variance">
 <code class="sig-name descname">set_variance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">first</span></em>, <em class="sig-param"><span class="n">second</span></em>, <em class="sig-param"><span class="n">f_var</span></em>, <em class="sig-param"><span class="n">s_var</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/pair_variances.html#PairVariances.set_variance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.pair_variances.PairVariances.set_variance" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which sets the variances of the pair of elements.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param first</dt>
+<dd class="field-odd"><p>The first element.</p>
+</dd>
+<dt class="field-even">type first</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param second</dt>
+<dd class="field-odd"><p>The second element.</p>
+</dd>
+<dt class="field-even">type second</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param f_var</dt>
+<dd class="field-odd"><p>The first element’s variance.</p>
+</dd>
+<dt class="field-even">type f_var</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param s_var</dt>
+<dd class="field-odd"><p>The second element’s variance.</p>
+</dd>
+<dt class="field-even">type s_var</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="data_structures.pair_variances.PairVariances.variance">
 <code class="sig-name descname">variance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">first</span></em>, <em class="sig-param"><span class="n">second</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/pair_variances.html#PairVariances.variance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.pair_variances.PairVariances.variance" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which returns the variance given a specific
+pair.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param first</dt>
+<dd class="field-odd"><p>The first element.</p>
+</dd>
+<dt class="field-even">type first</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param second</dt>
+<dd class="field-odd"><p>The second element.</p>
+</dd>
+<dt class="field-even">type second</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
 </div>
-<div class="section" id="module-data_structures.symmetric_matrix">
-<span id="data-structures-symmetric-matrix-module"></span><h2>data_structures.symmetric_matrix module<a class="headerlink" href="#module-data_structures.symmetric_matrix" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-structures-symmetric-matrix-module">
+<h2>data_structures.symmetric_matrix module<a class="headerlink" href="#data-structures-symmetric-matrix-module" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="data_structures.symmetric_matrix.SymmetricMatrix">
 <em class="property">class </em><code class="sig-prename descclassname">data_structures.symmetric_matrix.</code><code class="sig-name descname">SymmetricMatrix</code><span class="sig-paren">(</span><em class="sig-param">size=0</em>, <em class="sig-param">value=&lt;function SymmetricMatrix.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/symmetric_matrix.html#SymmetricMatrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.symmetric_matrix.SymmetricMatrix" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A class which implements a matrix object with
+symmetry characteristics.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="data_structures.symmetric_matrix.SymmetricMatrix.__getitem__">
+<code class="sig-name descname">__getitem__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/symmetric_matrix.html#SymmetricMatrix.__getitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.symmetric_matrix.SymmetricMatrix.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description.</dt><dd><p>Overriding the __getitem__ function.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param position</dt>
+<dd class="field-odd"><p>The index to access.</p>
+</dd>
+<dt class="field-even">type position</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
-<div class="section" id="module-data_structures">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-data_structures" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="data_structures.DynamicArray">
-<em class="property">class </em><code class="sig-prename descclassname">data_structures.</code><code class="sig-name descname">DynamicArray</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">default_value=&lt;function DynamicArray.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/dynamic_array.html#DynamicArray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.DynamicArray" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
-<dt id="data_structures.DynamicArray.append">
-<code class="sig-name descname">append</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/dynamic_array.html#DynamicArray.append"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.DynamicArray.append" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="data_structures.DynamicArray.col">
-<code class="sig-name descname">col</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/dynamic_array.html#DynamicArray.col"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.DynamicArray.col" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="data_structures.DynamicArray.extend">
-<code class="sig-name descname">extend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/dynamic_array.html#DynamicArray.extend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.DynamicArray.extend" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="data_structures.DynamicArray.set_col">
-<code class="sig-name descname">set_col</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/dynamic_array.html#DynamicArray.set_col"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.DynamicArray.set_col" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dt id="data_structures.symmetric_matrix.SymmetricMatrix.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">size=0</em>, <em class="sig-param">value=&lt;function SymmetricMatrix.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/symmetric_matrix.html#SymmetricMatrix.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.symmetric_matrix.SymmetricMatrix.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>SymmetricMatrix’s constructor.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param size</dt>
+<dd class="field-odd"><p>The initial size.</p>
+</dd>
+<dt class="field-even">type size</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param default_value</dt>
+<dd class="field-odd"><p>A function which returns a default                value when extending the metadata for uninitialized                    positions.</p>
+</dd>
+<dt class="field-even">type default_value</dt>
+<dd class="field-even"><p>function</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="py class">
-<dt id="data_structures.PairVariances">
-<em class="property">class </em><code class="sig-prename descclassname">data_structures.</code><code class="sig-name descname">PairVariances</code><a class="reference internal" href="_modules/data_structures/pair_variances.html#PairVariances"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.PairVariances" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
-<dt id="data_structures.PairVariances.set_variance">
-<code class="sig-name descname">set_variance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">first</span></em>, <em class="sig-param"><span class="n">second</span></em>, <em class="sig-param"><span class="n">f_var</span></em>, <em class="sig-param"><span class="n">s_var</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/pair_variances.html#PairVariances.set_variance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.PairVariances.set_variance" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="data_structures.PairVariances.variance">
-<code class="sig-name descname">variance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">first</span></em>, <em class="sig-param"><span class="n">second</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/pair_variances.html#PairVariances.variance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.PairVariances.variance" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dt id="data_structures.symmetric_matrix.SymmetricMatrix.__iter__">
+<code class="sig-name descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/symmetric_matrix.html#SymmetricMatrix.__iter__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.symmetric_matrix.SymmetricMatrix.__iter__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description.</dt><dd><p>Overriding the __iter__ function.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="py class">
-<dt id="data_structures.SymmetricMatrix">
-<em class="property">class </em><code class="sig-prename descclassname">data_structures.</code><code class="sig-name descname">SymmetricMatrix</code><span class="sig-paren">(</span><em class="sig-param">size=0</em>, <em class="sig-param">value=&lt;function SymmetricMatrix.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/symmetric_matrix.html#SymmetricMatrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.SymmetricMatrix" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="data_structures.symmetric_matrix.SymmetricMatrix.__setitem__">
+<code class="sig-name descname">__setitem__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/symmetric_matrix.html#SymmetricMatrix.__setitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.symmetric_matrix.SymmetricMatrix.__setitem__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description.</dt><dd><p>Overriding the __setitem__ function.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param position</dt>
+<dd class="field-odd"><p>The index to access.</p>
+</dd>
+<dt class="field-even">type position</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+<dt class="field-odd">param value</dt>
+<dd class="field-odd"><p>The value to set.</p>
+</dd>
+<dt class="field-even">type value</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="data_structures.symmetric_matrix.SymmetricMatrix.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#data_structures.symmetric_matrix.SymmetricMatrix.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="data_structures.symmetric_matrix.SymmetricMatrix._get_index">
+<code class="sig-name descname">_get_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_structures/symmetric_matrix.html#SymmetricMatrix._get_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#data_structures.symmetric_matrix.SymmetricMatrix._get_index" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which computes the resulting index
+out of a provided (row, column) tuple.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param position</dt>
+<dd class="field-odd"><p>A tuple of the form (row, column).</p>
+</dd>
+<dt class="field-even">type position</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -168,14 +449,19 @@
   <ul>
 <li><a class="reference internal" href="#">data_structures package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-data_structures.dynamic_array">data_structures.dynamic_array module</a></li>
-<li><a class="reference internal" href="#module-data_structures.pair_variances">data_structures.pair_variances module</a></li>
-<li><a class="reference internal" href="#module-data_structures.symmetric_matrix">data_structures.symmetric_matrix module</a></li>
-<li><a class="reference internal" href="#module-data_structures">Module contents</a></li>
+<li><a class="reference internal" href="#data-structures-dynamic-array-module">data_structures.dynamic_array module</a></li>
+<li><a class="reference internal" href="#data-structures-pair-variances-module">data_structures.pair_variances module</a></li>
+<li><a class="reference internal" href="#data-structures-symmetric-matrix-module">data_structures.symmetric_matrix module</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html"
+                        title="previous chapter">algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="stream.html"
+                        title="next chapter">stream package</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -206,6 +492,12 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="stream.html" title="stream package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html" title="algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based package"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">increc 0.0.13 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">data_structures package</a></li> 
       </ul>

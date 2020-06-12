@@ -46,11 +46,37 @@
   <h1>Source code for stream.file_stream.file_stream</h1><div class="highlight"><pre>
 <span></span><span class="c1"># Assuming files as (user_id, item_id, rating)</span>
 <div class="viewcode-block" id="FileStream"><a class="viewcode-back" href="../../../stream.file_stream.html#stream.file_stream.file_stream.FileStream">[docs]</a><span class="k">class</span> <span class="nc">FileStream</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A class which encapsulates common logic for the</span>
+<span class="sd">        implicit and explicit versions, and creates a data</span>
+<span class="sd">        stream with ratings out of a file dataset.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="FileStream.__init__"><a class="viewcode-back" href="../../../stream.file_stream.html#stream.file_stream.file_stream.FileStream.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            FileStream&#39;s constructor</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="p">)</span>
+<span class="sd">        Arguments</span>
+<span class="sd">            :param path: The path to the file.</span>
+<span class="sd">            :type path: string</span>
+<span class="sd">            :param sep: A character which separates the field in each line.</span>
+<span class="sd">            :type sep: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_parse_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="p">):</span>
+<div class="viewcode-block" id="FileStream._parse_file"><a class="viewcode-back" href="../../../stream.file_stream.html#stream.file_stream.file_stream.FileStream._parse_file">[docs]</a>    <span class="k">def</span> <span class="nf">_parse_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which parsed a file and returns a</span>
+<span class="sd">            data stream list.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param path: The path to the file.</span>
+<span class="sd">            :type path: string</span>
+<span class="sd">            :param sep: A character which separates the field in each line.</span>
+<span class="sd">            :type sep: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">stream</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
@@ -60,9 +86,18 @@
                 <span class="n">stream</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">rating</span><span class="p">))</span>
                 <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
             <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">stream</span>
+        <span class="k">return</span> <span class="n">stream</span></div>
 
 <div class="viewcode-block" id="FileStream.process_stream"><a class="viewcode-back" href="../../../stream.file_stream.html#stream.file_stream.file_stream.FileStream.process_stream">[docs]</a>    <span class="k">def</span> <span class="nf">process_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which processes a data stream</span>
+<span class="sd">            with a recomendation model.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param path: A recommendation algorithm or evaluator.</span>
+<span class="sd">            :type path: CollaborativeFiltering or PrequentialEvaluator.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">it</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">rating</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">:</span>
             <span class="c1"># print(f&quot;New rating entering: {rating} -&gt; Iter: {it}&quot;)</span>

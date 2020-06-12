@@ -49,16 +49,58 @@
 
 
 <div class="viewcode-block" id="UserBasedClustering"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_clustering.UserBasedClustering">[docs]</a><span class="k">class</span> <span class="nc">UserBasedClustering</span><span class="p">(</span><span class="n">UserBasedImplicitCF</span><span class="p">,</span> <span class="n">UserClustering</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        A class which implements the user-based neighborhood clustering</span>
+<span class="sd">        algorithm for implicit feedback.</span>
+<span class="sd">        Extends UserBasedImplicitCF and UserClustering.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="UserBasedClustering.__init__"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_clustering.UserBasedClustering.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">similarities</span><span class="o">=</span><span class="p">[],</span> <span class="n">co_rated</span><span class="o">=</span><span class="p">[],</span>
         <span class="n">neighbors</span><span class="o">=</span><span class="p">[],</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">treshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
             <span class="n">clusters</span><span class="o">=</span><span class="p">[],</span> <span class="n">centroids</span><span class="o">=</span><span class="p">[],</span> <span class="n">cluster_map</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            UserBasedClustering&#39;s constructor.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param matrix: The ratings matrix.</span>
+<span class="sd">            :type matrix: list</span>
+<span class="sd">            :param similarities: The similarity matrix.</span>
+<span class="sd">            :type similarities: SymmetricMatrix</span>
+<span class="sd">            :param avg_ratings: Users&#39; average ratings.</span>
+<span class="sd">            :type avg_ratings: DynamicArray</span>
+<span class="sd">            :param co_rated: The co-rated items matrix.</span>
+<span class="sd">            :type co_rated: SymmetricMatrix</span>
+<span class="sd">            :param neighbors: The neighborhood model.</span>
+<span class="sd">            :type neighbors: list</span>
+<span class="sd">            :param n_neighbors: Number of neighbors to compute for each user.</span>
+<span class="sd">            :type n_neighbors: int</span>
+<span class="sd">            :param treshold: A minimum similarity which pairs need to have for</span>
+<span class="sd">                clusters.</span>
+<span class="sd">            :type treshold: float</span>
+<span class="sd">            :param clusters: The cluster model.</span>
+<span class="sd">            :type clusters: list</span>
+<span class="sd">            :param centroids: The centroids model.</span>
+<span class="sd">            :type centroids: list</span>
+<span class="sd">            :param cluster_map: The inverted index of elements to their cluster</span>
+<span class="sd">            :type cluster_map: dictionary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">similarities</span><span class="p">,</span> <span class="n">co_rated</span><span class="p">)</span>
         <span class="n">UserClustering</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">neighbors</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">,</span> <span class="n">treshold</span><span class="p">,</span>
-            <span class="n">clusters</span><span class="p">,</span> <span class="n">centroids</span><span class="p">,</span> <span class="n">cluster_map</span><span class="p">)</span>
+            <span class="n">clusters</span><span class="p">,</span> <span class="n">centroids</span><span class="p">,</span> <span class="n">cluster_map</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="UserBasedClustering.new_rating"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.user_based.user_based_clustering.UserBasedClustering.new_rating">[docs]</a>    <span class="k">def</span> <span class="nf">new_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            The function which processes a new iteration. Expects a tuple</span>
+<span class="sd">            (user, item)</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param rating: The rating tuple.</span>
+<span class="sd">            :type rating: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">user_id</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">rating</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">new_rating</span><span class="p">(</span><span class="n">rating</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span></div></div>

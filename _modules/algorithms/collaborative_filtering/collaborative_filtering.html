@@ -54,7 +54,7 @@
 <span class="sd">        The CollaborativeFiltering abstract class. Intended</span>
 <span class="sd">        for generalizing collaborative filtering algorithms.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
+<div class="viewcode-block" id="CollaborativeFiltering.__init__"><a class="viewcode-back" href="../../../algorithms.collaborative_filtering.html#algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            CollaborativeFiltering&#39;s constructor.</span>
@@ -68,17 +68,17 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">users</span> <span class="o">=</span> <span class="nb">set</span><span class="p">({</span><span class="n">user_id</span> <span class="k">for</span> <span class="n">user_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">))})</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">DynamicArray</span><span class="p">(</span><span class="n">default_value</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">DynamicArray</span><span class="p">())</span>
         <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DynamicArray</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DynamicArray</span><span class="p">(</span><span class="n">row</span><span class="p">))</span></div>
 
-    <span class="k">def</span> <span class="nf">_init_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
+<div class="viewcode-block" id="CollaborativeFiltering._init_model"><a class="viewcode-back" href="../../../algorithms.collaborative_filtering.html#algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering._init_model">[docs]</a>    <span class="k">def</span> <span class="nf">_init_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            A function which returns a collaborative filtering model,</span>
 <span class="sd">            initializing it if empty.</span>
 
 <span class="sd">        Arguments</span>
-<span class="sd">            :param model: The collaborative filtering model. E.g list of</span>
-<span class="sd">            average ratings. Has to have __len__ implemented.</span>
+<span class="sd">            :param model: The collaborative filtering model. E.g list of\</span>
+<span class="sd">                average ratings. Has to have __len__ implemented.</span>
 <span class="sd">            :type model: Any.</span>
 <span class="sd">            :param callback: The function which returns a computed model.</span>
 <span class="sd">            :type callback: function.</span>
@@ -86,7 +86,7 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">callback</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">model</span></div>
+            <span class="k">return</span> <span class="n">model</span></div></div>
 </pre></div>
 
             <div class="clearer"></div>

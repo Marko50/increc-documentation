@@ -55,7 +55,7 @@
 <span class="sd">        clustering algorithm extending ItemBasedImplicitCF and</span>
 <span class="sd">        ItemClustering.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<div class="viewcode-block" id="ItemBasedClustering.__init__"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering.ItemBasedClustering.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">intersections</span><span class="o">=</span><span class="p">[],</span> <span class="n">l1</span><span class="o">=</span><span class="p">[],</span> <span class="n">inv_index</span><span class="o">=</span><span class="p">{},</span>
             <span class="n">similarities</span><span class="o">=</span><span class="p">[],</span> <span class="n">neighborhood</span><span class="o">=</span><span class="p">[],</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
             <span class="n">treshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">clusters</span><span class="o">=</span><span class="p">[],</span> <span class="n">centroids</span><span class="o">=</span><span class="p">[],</span> <span class="n">cluster_map</span><span class="o">=</span><span class="p">[]):</span>
@@ -91,7 +91,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">intersections</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">inv_index</span><span class="p">,</span> <span class="n">similarities</span><span class="p">)</span>
         <span class="n">ItemClustering</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">neighborhood</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">,</span> <span class="n">treshold</span><span class="p">,</span> <span class="n">clusters</span><span class="p">,</span> <span class="n">centroids</span><span class="p">,</span>
-            <span class="n">cluster_map</span><span class="p">)</span>
+            <span class="n">cluster_map</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ItemBasedClustering.new_rating"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering.ItemBasedClustering.new_rating">[docs]</a>    <span class="k">def</span> <span class="nf">new_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

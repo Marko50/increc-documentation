@@ -54,7 +54,7 @@
 <span class="sd">        models of users using standard knn and extends</span>
 <span class="sd">        NeighborhoodCF.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">neighbors</span><span class="o">=</span><span class="p">[],</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<div class="viewcode-block" id="UserNeighborhood.__init__"><a class="viewcode-back" href="../../../../algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.user_neighborhood.UserNeighborhood.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">neighbors</span><span class="o">=</span><span class="p">[],</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            UserNeighborhood&#39;s constructor.</span>
@@ -65,16 +65,16 @@
 <span class="sd">            :param n_neighbors: Number of neighbors to compute.</span>
 <span class="sd">            :type n_neighbors: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">neighbors</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">neighbors</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_init_neighborhood</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UserNeighborhood._init_neighborhood"><a class="viewcode-back" href="../../../../algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.user_neighborhood.UserNeighborhood._init_neighborhood">[docs]</a>    <span class="k">def</span> <span class="nf">_init_neighborhood</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            A function which computes and returns</span>
 <span class="sd">            a neighborhood for the user set, returning</span>
 <span class="sd">            a DynamicArray.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_init_neighborhood</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_init_neighborhood</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="p">)</span></div></div>
 </pre></div>
 
             <div class="clearer"></div>

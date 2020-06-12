@@ -59,18 +59,167 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf">
-<span id="algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-cf-module"></span><h2>algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf module<a class="headerlink" href="#module-algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-cf-module">
+<h2>algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf module<a class="headerlink" href="#algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-cf-module" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF">
 <em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.</code><code class="sig-name descname">ItemBasedImplicitCF</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">intersections</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">l1</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">inv_index</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">similarities</span><span class="o">=</span><span class="default_value">[]</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_cf.html#ItemBasedImplicitCF"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="algorithms.collaborative_filtering.html#algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering" title="algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.collaborative_filtering.CollaborativeFiltering</span></code></a></p>
-<dl class="simple">
+<dd><dl class="simple">
 <dt>Description</dt><dd><p>The implicit item based collaborative filtering class which focuses
 on calculating and incrementing similarities.
 Extends CollaborativeFiltering.</p>
 </dd>
 </dl>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">intersections</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">l1</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">inv_index</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">similarities</span><span class="o">=</span><span class="default_value">[]</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_cf.html#ItemBasedImplicitCF.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>ItemBasedImplicitCF’s constructor.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param matrix</dt>
+<dd class="field-odd"><p>The ratings matrix.</p>
+</dd>
+<dt class="field-even">type matrix</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param intersections</dt>
+<dd class="field-odd"><p>A matrix of item intersections.</p>
+</dd>
+<dt class="field-even">type intersections</dt>
+<dd class="field-even"><p>SymmetricMatrix</p>
+</dd>
+<dt class="field-odd">param l1</dt>
+<dd class="field-odd"><p>An array of items’ l1 norms.</p>
+</dd>
+<dt class="field-even">type l1</dt>
+<dd class="field-even"><p>DynamicArray</p>
+</dd>
+<dt class="field-odd">param inv_index</dt>
+<dd class="field-odd"><p>An inverted index of users to items.</p>
+</dd>
+<dt class="field-even">type inv_index</dt>
+<dd class="field-even"><p>defaultdict(set)</p>
+</dd>
+<dt class="field-odd">param similarities</dt>
+<dd class="field-odd"><p>A similarity matrix.</p>
+</dd>
+<dt class="field-even">type similarities</dt>
+<dd class="field-even"><p>SymmetricMatrix</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._init_intersections">
+<code class="sig-name descname">_init_intersections</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_cf.html#ItemBasedImplicitCF._init_intersections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._init_intersections" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>The function which computes and returns a
+SymmetricMatrix item intersections.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._init_inv_index">
+<code class="sig-name descname">_init_inv_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_cf.html#ItemBasedImplicitCF._init_inv_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._init_inv_index" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>The function which computes and returns a
+defaultdict(set) inverted index of users to
+their rated items.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._init_l1">
+<code class="sig-name descname">_init_l1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_cf.html#ItemBasedImplicitCF._init_l1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._init_l1" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>The function which computes and returns a
+DynamicArray which contains items’ l1 norms.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._init_similarities">
+<code class="sig-name descname">_init_similarities</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_cf.html#ItemBasedImplicitCF._init_similarities"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._init_similarities" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which computes and returns a
+similarity matrix. Returns a SymmetricMatrix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._init_similarity">
+<code class="sig-name descname">_init_similarity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em>, <em class="sig-param"><span class="n">another_item</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_cf.html#ItemBasedImplicitCF._init_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._init_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which computes and returns a similarity
+between a pair of items.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param item</dt>
+<dd class="field-odd"><p>The first item.</p>
+</dd>
+<dt class="field-even">type item</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param another_item</dt>
+<dd class="field-odd"><p>The second item.</p>
+</dd>
+<dt class="field-even">type another_item</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._update_intersections">
+<code class="sig-name descname">_update_intersections</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">item_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_cf.html#ItemBasedImplicitCF._update_intersections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._update_intersections" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which updates the intersection matrix.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param user_id</dt>
+<dd class="field-odd"><p>The user identifier.</p>
+</dd>
+<dt class="field-even">type user_id</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param item_id</dt>
+<dd class="field-odd"><p>The item identifier.</p>
+</dd>
+<dt class="field-even">type item_id</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._update_similarities">
+<code class="sig-name descname">_update_similarities</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_cf.html#ItemBasedImplicitCF._update_similarities"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF._update_similarities" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which updates the similarity matrix.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param item_id</dt>
+<dd class="field-odd"><p>The item identifier.</p>
+</dd>
+<dt class="field-even">type item_id</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF.intersections_between">
 <code class="sig-name descname">intersections_between</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em>, <em class="sig-param"><span class="n">another_item</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_cf.html#ItemBasedImplicitCF.intersections_between"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF.intersections_between" title="Permalink to this definition">¶</a></dt>
@@ -184,18 +333,96 @@ two items.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering">
-<span id="algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-clustering-module"></span><h2>algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering module<a class="headerlink" href="#module-algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-clustering-module">
+<h2>algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering module<a class="headerlink" href="#algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-clustering-module" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering.ItemBasedClustering">
 <em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering.</code><code class="sig-name descname">ItemBasedClustering</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">intersections</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">l1</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">inv_index</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">similarities</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">neighborhood</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">n_neighbors</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">treshold</span><span class="o">=</span><span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">clusters</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">centroids</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">cluster_map</span><span class="o">=</span><span class="default_value">[]</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_clustering.html#ItemBasedClustering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering.ItemBasedClustering" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF" title="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF</span></code></a>, <a class="reference internal" href="algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.item_clustering.ItemClustering" title="algorithms.collaborative_filtering.neighborhood.item_clustering.ItemClustering"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.item_clustering.ItemClustering</span></code></a></p>
-<dl class="simple">
+<dd><dl class="simple">
 <dt>Description</dt><dd><p>A class which implements the item-based neighborhood
 clustering algorithm extending ItemBasedImplicitCF and
 ItemClustering.</p>
 </dd>
 </dl>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering.ItemBasedClustering.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">intersections</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">l1</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">inv_index</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">similarities</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">neighborhood</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">n_neighbors</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">treshold</span><span class="o">=</span><span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">clusters</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">centroids</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">cluster_map</span><span class="o">=</span><span class="default_value">[]</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_clustering.html#ItemBasedClustering.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering.ItemBasedClustering.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>ItemBasedClustering’s constructor.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param matrix</dt>
+<dd class="field-odd"><p>The ratings matrix.</p>
+</dd>
+<dt class="field-even">type matrix</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param intersections</dt>
+<dd class="field-odd"><p>A matrix of item intersections.</p>
+</dd>
+<dt class="field-even">type intersections</dt>
+<dd class="field-even"><p>SymmetricMatrix</p>
+</dd>
+<dt class="field-odd">param l1</dt>
+<dd class="field-odd"><p>An array of items’ l1 norms.</p>
+</dd>
+<dt class="field-even">type l1</dt>
+<dd class="field-even"><p>DynamicArray</p>
+</dd>
+<dt class="field-odd">param inv_index</dt>
+<dd class="field-odd"><p>An inverted index of users to items.</p>
+</dd>
+<dt class="field-even">type inv_index</dt>
+<dd class="field-even"><p>defaultdict(set)</p>
+</dd>
+<dt class="field-odd">param similarities</dt>
+<dd class="field-odd"><p>A similarity matrix.</p>
+</dd>
+<dt class="field-even">type similarities</dt>
+<dd class="field-even"><p>SymmetricMatrix</p>
+</dd>
+<dt class="field-odd">param neighborhood</dt>
+<dd class="field-odd"><p>The neighborhood model.</p>
+</dd>
+<dt class="field-even">type neighborhood</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param n_neighbors</dt>
+<dd class="field-odd"><p>Number of neighbors to compute for each item.</p>
+</dd>
+<dt class="field-even">type n_neighbors</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param treshold</dt>
+<dd class="field-odd"><p>A minimum similarity which pairs need to have for
+clusters.</p>
+</dd>
+<dt class="field-even">type treshold</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">param clusters</dt>
+<dd class="field-odd"><p>The cluster model.</p>
+</dd>
+<dt class="field-even">type clusters</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param centroids</dt>
+<dd class="field-odd"><p>The centroids model.</p>
+</dd>
+<dt class="field-even">type centroids</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param cluster_map</dt>
+<dd class="field-odd"><p>The inverted index of elements to their cluster</p>
+</dd>
+<dt class="field-even">type cluster_map</dt>
+<dd class="field-even"><p>dictionary</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering.ItemBasedClustering.new_rating">
 <code class="sig-name descname">new_rating</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rating</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_clustering.html#ItemBasedClustering.new_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering.ItemBasedClustering.new_rating" title="Permalink to this definition">¶</a></dt>
@@ -218,17 +445,87 @@ ItemClustering.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh">
-<span id="algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-lsh-mh-module"></span><h2>algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh module<a class="headerlink" href="#module-algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-lsh-mh-module">
+<h2>algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh module<a class="headerlink" href="#algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-lsh-mh-module" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.ItemLSHMinHash">
 <em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.</code><code class="sig-name descname">ItemLSHMinHash</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">signature_matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">buckets</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">n_perms</span><span class="o">=</span><span class="default_value">6</span></em>, <em class="sig-param"><span class="n">n_bands</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_lsh_mh.html#ItemLSHMinHash"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.ItemLSHMinHash" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="algorithms.collaborative_filtering.neighborhood.implicit_feedback.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.lsh_min_hash.LSHMinHash" title="algorithms.collaborative_filtering.neighborhood.implicit_feedback.lsh_min_hash.LSHMinHash"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.implicit_feedback.lsh_min_hash.LSHMinHash</span></code></a></p>
-<dl class="simple">
+<dd><dl class="simple">
 <dt>Description</dt><dd><p>A class which implements the item-based locality-sensitive min hashing
 algorithm which extends LSHMinHash.</p>
 </dd>
 </dl>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.ItemLSHMinHash.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">signature_matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">buckets</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">n_perms</span><span class="o">=</span><span class="default_value">6</span></em>, <em class="sig-param"><span class="n">n_bands</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_lsh_mh.html#ItemLSHMinHash.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.ItemLSHMinHash.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>ItemLSHMinHash’s constructor.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param matrix</dt>
+<dd class="field-odd"><p>A ratings matrix.</p>
+</dd>
+<dt class="field-even">type matrix</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param signature_matrix</dt>
+<dd class="field-odd"><p>The signature matrix which contains
+elements’ signatures in the columns.</p>
+</dd>
+<dt class="field-even">type signature_matrix</dt>
+<dd class="field-even"><p>DynamicArray</p>
+</dd>
+<dt class="field-odd">param buckets</dt>
+<dd class="field-odd"><p>The buckets where elements are hashed into.</p>
+</dd>
+<dt class="field-even">type buckets</dt>
+<dd class="field-even"><p>defaultdict(set)</p>
+</dd>
+<dt class="field-odd">param n_perms</dt>
+<dd class="field-odd"><p>Number of permutations for hashing.</p>
+</dd>
+<dt class="field-even">type n_perms</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param n_bands</dt>
+<dd class="field-odd"><p>Number of bands which are used for bucketing.</p>
+</dd>
+<dt class="field-even">type n_bands</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.ItemLSHMinHash._elements">
+<code class="sig-name descname">_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_lsh_mh.html#ItemLSHMinHash._elements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.ItemLSHMinHash._elements" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which defines the elements to be
+hashed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.ItemLSHMinHash._permutation">
+<code class="sig-name descname">_permutation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_lsh_mh.html#ItemLSHMinHash._permutation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.ItemLSHMinHash._permutation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>A function which defines how to permutate a matrix.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param matrix</dt>
+<dd class="field-odd"><p>The matrix to be permutated.</p>
+</dd>
+<dt class="field-even">type matrix</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.ItemLSHMinHash.get_vector">
 <code class="sig-name descname">get_vector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span></em>, <em class="sig-param"><span class="n">pos</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_lsh_mh.html#ItemLSHMinHash.get_vector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.ItemLSHMinHash.get_vector" title="Permalink to this definition">¶</a></dt>
@@ -304,67 +601,71 @@ algorithm which extends LSHMinHash.</p>
 
 </dd></dl>
 
-<dl class="py function">
-<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.permutation">
-<code class="sig-prename descclassname">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.</code><code class="sig-name descname">permutation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh.permutation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Randomly permute a sequence, or return a permuted range.</p>
-<p>If <cite>x</cite> is a multi-dimensional array, it is only shuffled along its
-first index.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>New code should use the <code class="docutils literal notranslate"><span class="pre">permutation</span></code> method of a <code class="docutils literal notranslate"><span class="pre">default_rng()</span></code>
-instance instead; see <cite>random-quick-start</cite>.</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> (<em>int</em><em> or </em><em>array_like</em>) – If <cite>x</cite> is an integer, randomly permute <code class="docutils literal notranslate"><span class="pre">np.arange(x)</span></code>.
-If <cite>x</cite> is an array, make a copy and shuffle the elements
-randomly.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>out</strong> – Permuted sequence or array range.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>ndarray</p>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><code class="xref py py-func docutils literal notranslate"><span class="pre">Generator.permutation()</span></code></dt><dd><p>which should be used for new code.</p>
-</dd>
-</dl>
-</div>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="go">array([1, 7, 4, 3, 0, 9, 2, 5, 8, 6]) # random</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
-<span class="go">array([15,  1,  9,  4, 12]) # random</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-<span class="go">array([[6, 7, 8], # random</span>
-<span class="go">       [0, 1, 2],</span>
-<span class="go">       [3, 4, 5]])</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</div>
-<div class="section" id="module-algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood">
-<span id="algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-neighborhood-module"></span><h2>algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood module<a class="headerlink" href="#module-algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-neighborhood-module">
+<h2>algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood module<a class="headerlink" href="#algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-neighborhood-module" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood.ItemBasedNeighborhood">
 <em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood.</code><code class="sig-name descname">ItemBasedNeighborhood</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">intersections</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">l1</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">inv_index</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">similarities</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">neighborhood</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">n_neighbors</span><span class="o">=</span><span class="default_value">5</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_neighborhood.html#ItemBasedNeighborhood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood.ItemBasedNeighborhood" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF" title="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF</span></code></a>, <a class="reference internal" href="algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.item_neighborhood.ItemNeighborhood" title="algorithms.collaborative_filtering.neighborhood.item_neighborhood.ItemNeighborhood"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.item_neighborhood.ItemNeighborhood</span></code></a></p>
-<dl class="simple">
+<dd><dl class="simple">
 <dt>Description</dt><dd><p>The class which implements the classic item-based neighborhood
 algorithm which extends ItemBasedImplicitCF and ItemNeighborhood.</p>
 </dd>
 </dl>
+<dl class="py method">
+<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood.ItemBasedNeighborhood.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">intersections</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">l1</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">inv_index</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">similarities</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">neighborhood</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">n_neighbors</span><span class="o">=</span><span class="default_value">5</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_neighborhood.html#ItemBasedNeighborhood.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood.ItemBasedNeighborhood.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description</dt><dd><p>ItemBasedNeighborhood’s constructor.</p>
+</dd>
+<dt>Arguments</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param matrix</dt>
+<dd class="field-odd"><p>The ratings matrix.</p>
+</dd>
+<dt class="field-even">type matrix</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param intersections</dt>
+<dd class="field-odd"><p>A matrix of item intersections.</p>
+</dd>
+<dt class="field-even">type intersections</dt>
+<dd class="field-even"><p>SymmetricMatrix</p>
+</dd>
+<dt class="field-odd">param l1</dt>
+<dd class="field-odd"><p>An array of items’ l1 norms.</p>
+</dd>
+<dt class="field-even">type l1</dt>
+<dd class="field-even"><p>DynamicArray</p>
+</dd>
+<dt class="field-odd">param inv_index</dt>
+<dd class="field-odd"><p>An inverted index of users to items.</p>
+</dd>
+<dt class="field-even">type inv_index</dt>
+<dd class="field-even"><p>defaultdict(set)</p>
+</dd>
+<dt class="field-odd">param similarities</dt>
+<dd class="field-odd"><p>A similarity matrix.</p>
+</dd>
+<dt class="field-even">type similarities</dt>
+<dd class="field-even"><p>SymmetricMatrix</p>
+</dd>
+<dt class="field-odd">param neighbors</dt>
+<dd class="field-odd"><p>The neighborhood model.</p>
+</dd>
+<dt class="field-even">type neighbors</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">param n_neighbors</dt>
+<dd class="field-odd"><p>Number of neighbors to compute.</p>
+</dd>
+<dt class="field-even">type n_neighbors</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood.ItemBasedNeighborhood.new_rating">
 <code class="sig-name descname">new_rating</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rating</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_neighborhood.html#ItemBasedNeighborhood.new_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood.ItemBasedNeighborhood.new_rating" title="Permalink to this definition">¶</a></dt>
@@ -387,154 +688,6 @@ algorithm which extends ItemBasedImplicitCF and ItemNeighborhood.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemBasedClustering">
-<em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.</code><code class="sig-name descname">ItemBasedClustering</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">intersections</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">l1</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">inv_index</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">similarities</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">neighborhood</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">n_neighbors</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">treshold</span><span class="o">=</span><span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">clusters</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">centroids</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">cluster_map</span><span class="o">=</span><span class="default_value">[]</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_clustering.html#ItemBasedClustering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemBasedClustering" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF" title="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF</span></code></a>, <a class="reference internal" href="algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.item_clustering.ItemClustering" title="algorithms.collaborative_filtering.neighborhood.item_clustering.ItemClustering"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.item_clustering.ItemClustering</span></code></a></p>
-<dl class="simple">
-<dt>Description</dt><dd><p>A class which implements the item-based neighborhood
-clustering algorithm extending ItemBasedImplicitCF and
-ItemClustering.</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemBasedClustering.new_rating">
-<code class="sig-name descname">new_rating</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rating</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_clustering.html#ItemBasedClustering.new_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemBasedClustering.new_rating" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>Description</dt><dd><p>The function which processes a new iteration. Expects a tuple
-(user, item).</p>
-</dd>
-<dt>Arguments</dt><dd><dl class="field-list simple">
-<dt class="field-odd">param rating</dt>
-<dd class="field-odd"><p>The rating tuple.</p>
-</dd>
-<dt class="field-even">type rating</dt>
-<dd class="field-even"><p>tuple</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemBasedNeighborhood">
-<em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.</code><code class="sig-name descname">ItemBasedNeighborhood</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">intersections</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">l1</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">inv_index</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">similarities</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">neighborhood</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">n_neighbors</span><span class="o">=</span><span class="default_value">5</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_neighborhood.html#ItemBasedNeighborhood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemBasedNeighborhood" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF" title="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF</span></code></a>, <a class="reference internal" href="algorithms.collaborative_filtering.neighborhood.html#algorithms.collaborative_filtering.neighborhood.item_neighborhood.ItemNeighborhood" title="algorithms.collaborative_filtering.neighborhood.item_neighborhood.ItemNeighborhood"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.item_neighborhood.ItemNeighborhood</span></code></a></p>
-<dl class="simple">
-<dt>Description</dt><dd><p>The class which implements the classic item-based neighborhood
-algorithm which extends ItemBasedImplicitCF and ItemNeighborhood.</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemBasedNeighborhood.new_rating">
-<code class="sig-name descname">new_rating</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rating</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_neighborhood.html#ItemBasedNeighborhood.new_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemBasedNeighborhood.new_rating" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>Description</dt><dd><p>The function which processes a new iteration. Expects a tuple
-(user, item).</p>
-</dd>
-<dt>Arguments</dt><dd><dl class="field-list simple">
-<dt class="field-odd">param rating</dt>
-<dd class="field-odd"><p>The rating tuple.</p>
-</dd>
-<dt class="field-even">type rating</dt>
-<dd class="field-even"><p>tuple</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemLSHMinHash">
-<em class="property">class </em><code class="sig-prename descclassname">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.</code><code class="sig-name descname">ItemLSHMinHash</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">signature_matrix</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">buckets</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">n_perms</span><span class="o">=</span><span class="default_value">6</span></em>, <em class="sig-param"><span class="n">n_bands</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_lsh_mh.html#ItemLSHMinHash"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemLSHMinHash" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="algorithms.collaborative_filtering.neighborhood.implicit_feedback.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.lsh_min_hash.LSHMinHash" title="algorithms.collaborative_filtering.neighborhood.implicit_feedback.lsh_min_hash.LSHMinHash"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithms.collaborative_filtering.neighborhood.implicit_feedback.lsh_min_hash.LSHMinHash</span></code></a></p>
-<dl class="simple">
-<dt>Description</dt><dd><p>A class which implements the item-based locality-sensitive min hashing
-algorithm which extends LSHMinHash.</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemLSHMinHash.get_vector">
-<code class="sig-name descname">get_vector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span></em>, <em class="sig-param"><span class="n">pos</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_lsh_mh.html#ItemLSHMinHash.get_vector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemLSHMinHash.get_vector" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>Description</dt><dd><p>A function which returns a position of a matrix.</p>
-</dd>
-<dt>Arguments</dt><dd><dl class="field-list simple">
-<dt class="field-odd">param matrix</dt>
-<dd class="field-odd"><p>The matrix to be accessed.</p>
-</dd>
-<dt class="field-even">type matrix</dt>
-<dd class="field-even"><p>list</p>
-</dd>
-<dt class="field-odd">param pos</dt>
-<dd class="field-odd"><p>The index/position.</p>
-</dd>
-<dt class="field-even">type pos</dt>
-<dd class="field-even"><p>int</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemLSHMinHash.new_rating">
-<code class="sig-name descname">new_rating</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rating</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_lsh_mh.html#ItemLSHMinHash.new_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemLSHMinHash.new_rating" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>Description</dt><dd><p>The function which processes a new iteration. Expects a tuple
-(user, item)</p>
-</dd>
-<dt>Arguments</dt><dd><dl class="field-list simple">
-<dt class="field-odd">param rating</dt>
-<dd class="field-odd"><p>The rating tuple.</p>
-</dd>
-<dt class="field-even">type rating</dt>
-<dd class="field-even"><p>tuple</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemLSHMinHash.recommend">
-<code class="sig-name descname">recommend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">n_rec</span></em>, <em class="sig-param"><span class="n">repeated</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/algorithms/collaborative_filtering/neighborhood/implicit_feedback/item_based/item_based_lsh_mh.html#ItemLSHMinHash.recommend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.ItemLSHMinHash.recommend" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>Description</dt><dd><p>A function which returns recommendations for a user.</p>
-</dd>
-<dt>Arguments</dt><dd><dl class="field-list simple">
-<dt class="field-odd">param user_id</dt>
-<dd class="field-odd"><p>The user identifier.</p>
-</dd>
-<dt class="field-even">type user_id</dt>
-<dd class="field-even"><p>int</p>
-</dd>
-<dt class="field-odd">param n_rec</dt>
-<dd class="field-odd"><p>The number of items to recommend.</p>
-</dd>
-<dt class="field-even">type n_rec</dt>
-<dd class="field-even"><p>int</p>
-</dd>
-<dt class="field-odd">param repeated</dt>
-<dd class="field-odd"><p>Variable which defines if already rated products                can be recommended.</p>
-</dd>
-<dt class="field-even">type repeated</dt>
-<dd class="field-even"><p>boolean</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</div>
 </div>
 
 
@@ -548,11 +701,10 @@ algorithm which extends LSHMinHash.</p>
   <ul>
 <li><a class="reference internal" href="#">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf module</a></li>
-<li><a class="reference internal" href="#module-algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering module</a></li>
-<li><a class="reference internal" href="#module-algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh module</a></li>
-<li><a class="reference internal" href="#module-algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood module</a></li>
-<li><a class="reference internal" href="#module-algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based">Module contents</a></li>
+<li><a class="reference internal" href="#algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-cf-module">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf module</a></li>
+<li><a class="reference internal" href="#algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-clustering-module">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_clustering module</a></li>
+<li><a class="reference internal" href="#algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-lsh-mh-module">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_lsh_mh module</a></li>
+<li><a class="reference internal" href="#algorithms-collaborative-filtering-neighborhood-implicit-feedback-item-based-item-based-neighborhood-module">algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood module</a></li>
 </ul>
 </li>
 </ul>
