@@ -49,13 +49,47 @@
 
 
 <div class="viewcode-block" id="ItemBasedNeighborhood"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood.ItemBasedNeighborhood">[docs]</a><span class="k">class</span> <span class="nc">ItemBasedNeighborhood</span><span class="p">(</span><span class="n">ItemBasedImplicitCF</span><span class="p">,</span> <span class="n">ItemNeighborhood</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description</span>
+<span class="sd">        The class which implements the classic item-based neighborhood</span>
+<span class="sd">        algorithm which extends ItemBasedImplicitCF and ItemNeighborhood.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[],</span> <span class="n">intersections</span><span class="o">=</span><span class="p">[],</span> <span class="n">l1</span><span class="o">=</span><span class="p">[],</span> <span class="n">inv_index</span><span class="o">=</span><span class="p">{},</span>
             <span class="n">similarities</span><span class="o">=</span><span class="p">[],</span> <span class="n">neighborhood</span><span class="o">=</span><span class="p">[],</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            ItemBasedNeighborhood&#39;s constructor.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param matrix: The ratings matrix.</span>
+<span class="sd">            :type matrix: list</span>
+<span class="sd">            :param intersections: A matrix of item intersections.</span>
+<span class="sd">            :type intersections: SymmetricMatrix</span>
+<span class="sd">            :param l1: An array of items&#39; l1 norms.</span>
+<span class="sd">            :type l1: DynamicArray</span>
+<span class="sd">            :param inv_index: An inverted index of users to items.</span>
+<span class="sd">            :type inv_index: defaultdict(set)</span>
+<span class="sd">            :param similarities: A similarity matrix.</span>
+<span class="sd">            :type similarities: SymmetricMatrix</span>
+<span class="sd">            :param neighbors: The neighborhood model.</span>
+<span class="sd">            :type neighbors: list</span>
+<span class="sd">            :param n_neighbors: Number of neighbors to compute.</span>
+<span class="sd">            :type n_neighbors: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">intersections</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">inv_index</span><span class="p">,</span> <span class="n">similarities</span><span class="p">)</span>
         <span class="n">ItemNeighborhood</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">neighborhood</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ItemBasedNeighborhood.new_rating"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_neighborhood.ItemBasedNeighborhood.new_rating">[docs]</a>    <span class="k">def</span> <span class="nf">new_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            The function which processes a new iteration. Expects a tuple</span>
+<span class="sd">            (user, item).</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param rating: The rating tuple.</span>
+<span class="sd">            :type rating: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">new_rating</span><span class="p">(</span><span class="n">rating</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">neighbors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_neighborhood</span><span class="p">()</span></div></div>
 </pre></div>

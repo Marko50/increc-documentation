@@ -161,16 +161,43 @@
         <span class="k">return</span> <span class="n">inv_index</span>
 
     <span class="k">def</span> <span class="nf">_update_intersections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which updates the intersection matrix.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param user_id: The user identifier.</span>
+<span class="sd">            :type user_id: int</span>
+<span class="sd">            :param item_id: The item identifier.</span>
+<span class="sd">            :type item_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">another_item_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inv_index_of</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">intersections</span><span class="p">[(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">another_item_id</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">def</span> <span class="nf">_update_similarities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which updates the similarity matrix.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param item_id: The item identifier.</span>
+<span class="sd">            :type item_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">another_item_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">similarities</span><span class="p">[(</span>
                 <span class="n">item_id</span><span class="p">,</span> <span class="n">another_item_id</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_similarity</span><span class="p">(</span>
                     <span class="n">item_id</span><span class="p">,</span> <span class="n">another_item_id</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ItemBasedImplicitCF.new_rating"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF.new_rating">[docs]</a>    <span class="k">def</span> <span class="nf">new_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rating</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            The function which processes a new iteration. Expects a tuple</span>
+<span class="sd">            (user, item).</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param rating: The rating tuple.</span>
+<span class="sd">            :type rating: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">user_id</span><span class="p">,</span> <span class="n">item_id</span> <span class="o">=</span> <span class="n">rating</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">user_id</span><span class="p">][</span><span class="n">item_id</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
@@ -182,6 +209,19 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_similarities</span><span class="p">(</span><span class="n">item_id</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ItemBasedImplicitCF.recommend"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF.recommend">[docs]</a>    <span class="k">def</span> <span class="nf">recommend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">n_rec</span><span class="p">,</span> <span class="n">repeated</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which returns recommendations for a user.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param user_id: The user identifier.</span>
+<span class="sd">            :type user_id: int</span>
+<span class="sd">            :param n_rec: The number of items to recommend.</span>
+<span class="sd">            :type n_rec: int</span>
+<span class="sd">            :param repeated: Variable which defines if already rated products\</span>
+<span class="sd">                can be recommended.</span>
+<span class="sd">            :type repeated: boolean</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">candidates</span> <span class="o">=</span> <span class="p">{</span>
             <span class="n">ident</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="k">for</span> <span class="n">ident</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">neighborhood_of</span><span class="p">(</span>
                 <span class="n">item</span><span class="p">)}</span>
@@ -192,17 +232,40 @@
         <span class="n">shuffle</span><span class="p">(</span><span class="n">final</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">final</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n_rec</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="ItemBasedImplicitCF.process_stream"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF.process_stream">[docs]</a>    <span class="k">def</span> <span class="nf">process_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">rating</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">new_rating</span><span class="p">(</span><span class="n">rating</span><span class="p">)</span></div>
-
 <div class="viewcode-block" id="ItemBasedImplicitCF.intersections_between"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF.intersections_between">[docs]</a>    <span class="k">def</span> <span class="nf">intersections_between</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">another_item</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which returns the item intersections between</span>
+<span class="sd">            two items.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param item: The first item.</span>
+<span class="sd">            :type item: int</span>
+<span class="sd">            :param another_item: The second item.</span>
+<span class="sd">            :type another_item: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">intersections</span><span class="p">[(</span><span class="n">item</span><span class="p">,</span> <span class="n">another_item</span><span class="p">)]</span></div>
 
 <div class="viewcode-block" id="ItemBasedImplicitCF.l1_norm_of"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF.l1_norm_of">[docs]</a>    <span class="k">def</span> <span class="nf">l1_norm_of</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which returns an item&#39;s l1_norm.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param item: The item identifier.</span>
+<span class="sd">            :type item: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">l1_norms</span><span class="p">[</span><span class="n">item</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="ItemBasedImplicitCF.inv_index_of"><a class="viewcode-back" href="../../../../../../algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.html#algorithms.collaborative_filtering.neighborhood.implicit_feedback.item_based.item_based_cf.ItemBasedImplicitCF.inv_index_of">[docs]</a>    <span class="k">def</span> <span class="nf">inv_index_of</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Description</span>
+<span class="sd">            A function which returns a users&#39; rated items.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">            :param user_id: The user identifier.</span>
+<span class="sd">            :type user_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">inv_index</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span></div></div>
 </pre></div>
 
