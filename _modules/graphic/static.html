@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>graphic.static &#8212; increc 0.0.13 documentation</title>
+    <title>graphic.static &#8212; increc 0.0.14 documentation</title>
     <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
@@ -32,7 +32,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">increc 0.0.13 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">increc 0.0.14 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">graphic.static</a></li> 
       </ul>
@@ -101,32 +101,36 @@
         <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">elap_rec</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Recommendation time.&quot;</span><span class="p">)</span>
         <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="EvaluationStatic.export"><a class="viewcode-back" href="../../graphic.html#graphic.static.EvaluationStatic.export">[docs]</a>    <span class="k">def</span> <span class="nf">export</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="EvaluationStatic.export"><a class="viewcode-back" href="../../graphic.html#graphic.static.EvaluationStatic.export">[docs]</a>    <span class="k">def</span> <span class="nf">export</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            A function which exports the plots to an image format. Displays</span>
 <span class="sd">            it if show=True.</span>
 
 <span class="sd">        Arguments</span>
+<span class="sd">            :param path: The output path of the figure.</span>
+<span class="sd">            :type path: string</span>
 <span class="sd">            :param show: Does it show the image or not.</span>
 <span class="sd">            :type show: boolean</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;output.png&quot;</span><span class="p">)</span></div>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="EvaluationStatic.process"><a class="viewcode-back" href="../../graphic.html#graphic.static.EvaluationStatic.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="EvaluationStatic.process"><a class="viewcode-back" href="../../graphic.html#graphic.static.EvaluationStatic.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Description</span>
 <span class="sd">            A function which processes a data stream and creates a graph.</span>
 
 <span class="sd">        Arguments</span>
+<span class="sd">            :param path: The output path of the figure.</span>
+<span class="sd">            :type path: string</span>
 <span class="sd">            :param show: Does it show the image or not.</span>
 <span class="sd">            :type show: boolean</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">show</span><span class="p">)</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">show</span><span class="p">)</span></div></div>
 </pre></div>
 
             <div class="clearer"></div>
@@ -158,7 +162,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">increc 0.0.13 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">increc 0.0.14 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">graphic.static</a></li> 
       </ul>
